@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Menu | Burger Kingdom</title>
+    <link rel="icon" href="images/bg.png" type="image/png">
+    <meta name="description" content="Explore our delicious menu of Burgers, Chowmein, and more.">
+
+    <!-- Open Graph / WhatsApp Sharing -->
+    <meta property="og:title" content="Our Menu | Burger Kingdom">
+    <meta property="og:description" content="Explore our delicious menu of Burgers, Chowmein, and more.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=800">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- 1. Daily Specials Ticker -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            TODAY'S SPECIAL: Buy 1 Get 1 Free on all Burgers! &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; Happy Hour: 4 PM -
+            7 PM (20% OFF) &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; Call +91 77869 90999 for Home Delivery
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="glass animate-enter">
+        <div class="logo">BURGER<span style="color:var(--secondary)">KINGDOM</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html" data-i18n="home">Home</a></li>
+            <li><a href="menu.html" data-i18n="menu" style="color:var(--secondary)">Menu</a></li>
+            <li><a href="customize.html" style="color:var(--primary); font-weight:bold;">Build Recipe</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" style="cursor: pointer;" data-i18n="booking">Booking <i
+                        class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="index.html#booking-form" data-i18n="sub-wedding">Shadi Vivah / Birthday</a>
+                    <a href="index.html#booking-form" data-i18n="sub-hall">Hall Book for Party</a>
+                </div>
+            </li>
+            <li><a href="index.html#about" data-i18n="story">Story</a></li>
+            <li><a href="index.html#contact" data-i18n="contact">Contact</a></li>
+            <li><a href="#" class="btn-primary" style="padding: 0.5rem 1.5rem;">Order</a></li>
+            <li><button id="lang-btn" class="lang-btn">हिंदी</button></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Page Header -->
+    <header class="hero" style="min-height: 50vh; height: auto; padding-top: 160px; align-items: flex-start;">
+        <div class="hero-content glass animate-enter delay-1">
+            <h1 class="animate-enter delay-2">Our <span style="color:var(--primary)">Culinary Journey</span></h1>
+            <p class="animate-enter delay-3">More than just food. It's an experience.</p>
+        </div>
+    </header>
+
+    <!-- Menu Section -->
+    <section class="featured">
+
+        <!-- Search Bar -->
+        <div class="search-container animate-enter" style="text-align:center; margin-bottom: 2rem;">
+            <input type="text" id="menu-search" placeholder="Search for Paneer, Burger, etc..."
+                style="padding: 1rem; width: 80%; max-width: 500px; border-radius: 50px; border: none; outline: none; font-size: 1rem; background: rgba(255,255,255,0.9); color: #333; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+        </div>
+
+        <!-- Category: Burgers -->
+        <h2 class="section-title animate-enter" data-i18n="cat-burgers"><i class="fas fa-hamburger"
+                style="margin-right:10px; color:var(--primary)"></i>Burgers</h2>
+        <p class="section-desc animate-enter" data-i18n="desc-burgers"
+            style="text-align:center; color:#ccc; margin-bottom:2rem; max-width:600px; margin-left:auto; margin-right:auto;">
+            The burger journey began in the late 19th century, evolving from a simple steak to a global icon. We honor
+            this history by grilling our patties to perfection, ensuring every bite is a celebration of flavor.
+        </p>
+        <div class="food-grid animate-enter">
+            <div class="food-card glass">
+                <h3 class="food-title" data-i18n="item-vegburger">Classic Veg Burger</h3>
+                <p data-i18n="desc-vegburger" style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">A
+                    timeless classic. Our
+                    vegetable patty is crafted with farm-fresh greens and aromatic spices, crisped to golden perfection.
+                    It’s the taste of nostalgia in every bite.</p>
+                <button class="btn-primary add-to-cart"
+                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
+                        class="fas fa-plus"></i></button>
+            </div>
+            <div class="food-card glass">
+                <h3 class="food-title" data-i18n="item-cheeseburger">Cheese Burger</h3>
+                <p data-i18n="desc-cheeseburger"
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">Legend says the cheeseburger
+                    was created by accident in the 1920s. We recreate that magic by melting a thick slice of premium
+                    cheese over a hot patty, creating a gooey, savory masterpiece.</p>
+                <button class="btn-primary add-to-cart"
+                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
+                        class="fas fa-plus"></i></button>
+            </div>
+            <div class="food-card glass">
+                <h3 class="food-title" data-i18n="item-paneerburger">Paneer Burger</h3>
+                <p data-i18n="desc-paneerburger"
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">An Indian twist on the
+                    Western classic. We marinate fresh paneer in a secret yogurt-spice blend and grill it until it's
+                    smoky and tender. A royal treat for vegetarians.</p>
+                <button class="btn-primary add-to-cart"
+                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
+                        class="fas fa-plus"></i></button>
+            </div>
+            <div class="food-card glass">
+                <h3 class="food-title" data-i18n="item-crispyburger">Crispy Special Burger</h3>
+                <p data-i18n="desc-crispyburger"
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;"><b>Our Chef's
+                        Masterpiece.</b> We developed a double-coating technique to ensure maximum crunch using secret
+                    herbs. It's not just a burger; it's a texture explosion.</p>
+                <button class="btn-primary add-to-cart"
+                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
+                        class="fas fa-plus"></i></button>
+            </div>
+        </div>
+
+        <!-- Category: Chowmein -->
+        <h2 class="section-title animate-enter" data-i18n="cat-chowmein" style="margin-top:4rem;"><i
+                class="fas fa-utensils" style="margin-right:10px; color:var(--primary)"></i>Chowmein</h2>
+        <p class="section-desc animate-enter" data-i18n="desc-chowmein"
+            style="text-align:center; color:#ccc; margin-bottom:2rem; max-width:600px; margin-left:auto; margin-right:auto;">
+            Originating from China and loved by India. Our Chowmein is wok-tossed at high flames to capture the 'Wok
+            Hei' - the breath of the wok, giving it that distinct smoky flavor.
+        </p>
+        <div class="food-grid animate-enter">
+            <div class="food-card glass">
+                <h3 class="food-title" data-i18n="item-vegchowmein">Veg Chowmein</h3>
+                <p data-i18n="desc-vegchowmein" style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">
+                    Hand-pulled noodles tossed
+                    with crunchy cabbage, carrots, and bell peppers. Simple, authentic, and full of that street-style
+                    zest.</p>
+                <button class="btn-primary add-to-cart"
+                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
+                        class="fas fa-plus"></i></button>
+            </div>
+            <div class="food-card glass">
+                <h3 class="food-title" data-i18n="item-paneerchowmein">Paneer Chowmein</h3>
+                <p data-i18n="desc-paneerchowmein"
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">Soft cubes of fresh paneer
+                    meet spicy noodles. The creamy texture of paneer balances the spicy soy-garlic sauce perfectly.</p>
+                <button class="btn-primary add-to-cart"
+                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
+                        class="fas fa-plus"></i></button>
+            </div>
+            <div class="food-card glass">
+                <h3 class="food-title" data-i18n="item-specialchowmein">Special Chowmein</h3>
+                <p data-i18n="desc-specialchowmein"
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">A carnival of flavors!
+                    Loaded
+                    with exotic vegetables and tossed in our secret spicy sauce blend. It's a party on your palate.</p>
+                <button class="btn-primary add-to-cart"
+                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
+                        class="fas fa-plus"></i></button>
+            </div>
+        </div>
+
+        <!-- Category: Manchurian & Rice -->
+        <h2 class="section-title animate-enter" data-i18n="cat-rice" style="margin-top:4rem;"><i
+                class="fas fa-bowl-rice" style="margin-right:10px; color:var(--primary)"></i>Rice & Manchurian</h2>
+        <p class="section-desc animate-enter" data-i18n="desc-rice"
+            style="text-align:center; color:#ccc; margin-bottom:2rem; max-width:600px; margin-left:auto; margin-right:auto;">
+            A fusion of bold flavors. Our Manchurian balls are handcrafted daily, and our rice is stir-fried to fluffy
+            perfection.
+        </p>
+        <div class="food-grid animate-enter">
+            <div class="food-card glass">
+                <h3 class="food-title" data-i18n="item-vegmanchurian">Veg Manchurian</h3>
+                <p data-i18n="desc-vegmanchurian"
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">Finely chopped veggies
+                    formed
+                    into golden dumplings, simmered in a dark, rich soy-garlic gravy. A glorious invention of
+                    Indo-Chinese cuisine.</p>
+                <button class="btn-primary add-to-cart"
+                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
+                        class="fas fa-plus"></i></button>
+            </div>
+            <div class="food-card glass">
+                <h3 class="food-title" data-i18n="item-paneermanchurian">Paneer Manchurian</h3>
+                <p data-i18n="desc-paneermanchurian"
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">Fried paneer cubes tossed in
+                    a tangy Manchurian sauce. The crispy exterior and soft interior of the paneer create a delightful
+                    contrast.</p>
+                <button class="btn-primary add-to-cart"
+                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
+                        class="fas fa-plus"></i></button>
+            </div>
+            <div class="food-card glass">
+                <h3 class="food-title" data-i18n="item-vegfriedrice">Veg Fried Rice</h3>
+                <p data-i18n="desc-vegfriedrice"
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">Long grain basmati rice,
+                    wok-tossed with fresh veggies and a hint of black pepper. Light, aromatic, and delicious.</p>
+                <button class="btn-primary add-to-cart"
+                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
+                        class="fas fa-plus"></i></button>
+            </div>
+            <div class="food-card glass">
+                <h3 class="food-title" data-i18n="item-paneerfriedrice">Paneer Fried Rice</h3>
+                <p data-i18n="desc-paneerfriedrice"
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">Our classic fried rice
+                    upgraded with golden-fried paneer bits. A wholesome meal that fills you up with joy.</p>
+                <button class="btn-primary add-to-cart"
+                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
+                        class="fas fa-plus"></i></button>
+            </div>
+            <div class="food-card glass">
+                <h3 class="food-title" data-i18n="item-specialfriedrice">Special Fried Rice</h3>
+                <p data-i18n="desc-specialfriedrice"
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">The King of Rice dishes. We
+                    add cashews, raisins, and exotic veggies to make this a royal feast fit for a king.</p>
+                <button class="btn-primary add-to-cart"
+                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
+                        class="fas fa-plus"></i></button>
+            </div>
+        </div>
+
+        <!-- Category: Snacks & Starters -->
+        <h2 class="section-title animate-enter" data-i18n="cat-starters" style="margin-top:4rem;"><i
+                class="fas fa-drumstick-bite" style="margin-right:10px; color:var(--primary)"></i>Starters</h2>
+        <div class="food-grid animate-enter">
+            <div class="food-card glass">
+                <h3 class="food-title" data-i18n="item-honeypotato">Crispy Honey Potato</h3>
+                <p data-i18n="desc-honeypotato" style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">
+                    Crispy potato fingers glazed
+                    with sweet honey and spicy chili sesame sauce. A perfectly balanced sweet and spicy addiction.</p>
+                <button class="btn-primary add-to-cart"
+                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
+                        class="fas fa-plus"></i></button>
+            </div>
+            <div class="food-card glass">
+                <h3 class="food-title" data-i18n="item-chefhoneypotato">Chef's Special Honey Potato</h3>
+                <p data-i18n="desc-chefhoneypotato"
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">Our chef's secret version
+                    with extra crunch and a hint of ginger, topped with roasted sesame seeds.</p>
+                <button class="btn-primary add-to-cart"
+                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
+                        class="fas fa-plus"></i></button>
+            </div>
+            <div class="food-card glass">
+                <h3 class="food-title" data-i18n="item-paneertikka">Classic Paneer Tikka</h3>
+                <p data-i18n="desc-paneertikka" style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">
+                    Born from the Tandoors of
+                    Punjab. Paneer marinated in yogurt and spices, roasted until charred. Smoky and succulent.</p>
+                <button class="btn-primary add-to-cart"
+                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
+                        class="fas fa-plus"></i></button>
+            </div>
+            <div class="food-card glass">
+                <h3 class="food-title" data-i18n="item-tandooritikka">Tandoori Paneer Tikka</h3>
+                <p data-i18n="desc-tandooritikka"
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">Extra smoky, extra spicy.
+                    Marinated overnight to let the flavor penetrate deep into the paneer.</p>
+                <button class="btn-primary add-to-cart"
+                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
+                        class="fas fa-plus"></i></button>
+            </div>
+            <div class="food-card glass">
+                <h3 class="food-title" data-i18n="item-vegspringroll">Veg Spring Roll</h3>
+                <p data-i18n="desc-vegspringroll"
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">A crispy wrapper filled with
+                    a savory vegetable mix, fried to a golden hue. The perfect crunch in every bite.</p>
+                <button class="btn-primary add-to-cart"
+                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
+                        class="fas fa-plus"></i></button>
+            </div>
+            <div class="food-card glass">
+                <h3 class="food-title" data-i18n="item-paneerspringroll">Paneer Spring Roll</h3>
+                <p data-i18n="desc-paneerspringroll"
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">The crispy skin outside
+                    meets soft, spiced grated paneer inside. A texture combination made in heaven.</p>
+                <button class="btn-primary add-to-cart"
+                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
+                        class="fas fa-plus"></i></button>
+            </div>
+            <!-- Special Request Item -->
+            <div class="food-card glass must-try" style="border: 2px solid var(--primary);">
+                <div
+                    style="position:absolute; top:10px; right:10px; background:var(--primary); padding:2px 8px; border-radius:10px; font-size:0.7rem;">
+                    MUST TRY</div>
+                <h3 class="food-title" data-i18n="item-dahibda">Dahi Bda</h3>
+                <p data-i18n="desc-dahibda" style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;"><b>A
+                        Tradition of
+                        Coolness.</b> Soft lentil dumplings soaked in creamy, chilled yogurt, topped with tangy tamarind
+                    chutney and roasted cumin. The ultimate comfort food.</p>
+                <button class="btn-primary add-to-cart"
+                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
+                        class="fas fa-plus"></i></button>
+            </div>
+        </div>
+
+    </section>
+
+    <footer class="glass" style="margin: 2rem 5%; border-radius: 16px;">
+        <p>&copy; 2026 Burger Kingdom. All rights reserved.</p>
+        <div style="margin-top: 1rem; font-size: 1.5rem;">
+            <i class="fab fa-instagram" style="margin: 0 10px; cursor: pointer; transition: 0.3s; color:white;"></i>
+            <i class="fab fa-facebook" style="margin: 0 10px; cursor: pointer; transition: 0.3s; color:white;"></i>
+            <i class="fab fa-twitter" style="margin: 0 10px; cursor: pointer; transition: 0.3s; color:white;"></i>
+        </div>
+    </footer>
+
+    <!-- Floating Cart Button -->
+    <div id="cart-float-btn" class="glass"
+        style="position: fixed; bottom: 90px; right: 20px; padding: 15px; border-radius: 50%; cursor: pointer; border: 2px solid var(--primary); z-index: 1000; display: none;">
+        <i class="fas fa-shopping-cart" style="color: var(--primary); font-size: 1.5rem;"></i>
+        <span id="cart-count"
+            style="position: absolute; top: -5px; right: -5px; background: red; color: white; border-radius: 50%; padding: 2px 8px; font-size: 0.8rem; font-weight: bold;">0</span>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center;">
+        <div class="glass"
+            style="width: 90%; max-width: 500px; padding: 2rem; border-radius: 16px; position: relative;">
+            <i class="fas fa-times" id="close-cart"
+                style="position: absolute; top: 15px; right: 15px; color: white; cursor: pointer; font-size: 1.5rem;"></i>
+            <h2 style="color: var(--primary); margin-bottom: 1rem;">Your Cart <i class="fas fa-shopping-cart"></i></h2>
+            <div id="cart-items" style="max-height: 300px; overflow-y: auto; margin-bottom: 1rem;">
+                <!-- Cart Items will be injected here -->
+                <p style="color: #ccc;">Your cart is empty.</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; text-align: right;">
+                <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem;">Total Items: <span
+                        id="cart-total-count">0</span></p>
+                <button id="checkout-btn" class="btn-primary" style="width: 100%;"><i class="fab fa-whatsapp"></i> Order
+                    on WhatsApp</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/917786990999?text=Hi%20Burger%20Kingdom,%20I%20would%20like%20to%20order!"
+        class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Recipe | Burger Kingdom</title>
+    <link rel="icon" href="images/bg.png" type="image/png">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Burger Kingdom - Build Your Recipe">
+    <meta property="og:description" content="Customize your own meal just the way you like it.">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- 1. Daily Specials Ticker -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            TODAY'S SPECIAL: Buy 1 Get 1 Free on all Burgers! &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; Happy Hour: 4 PM -
+            7 PM (20% OFF) &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; Call +91 77869 90999 for Home Delivery
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="glass animate-enter">
+        <div class="logo">BURGER<span style="color:var(--secondary)">KINGDOM</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html" data-i18n="home">Home</a></li>
+            <li><a href="menu.html" data-i18n="menu">Menu</a></li>
+            <li><a href="customize.html" class="active" style="color:var(--primary); font-weight:bold;">Build Recipe</a>
+            </li>
+            <li class="dropdown">
+                <a href="index.html#booking" style="cursor: pointer;" data-i18n="booking">Booking <i
+                        class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="index.html#booking-form" data-i18n="sub-wedding">Shadi Vivah / Birthday</a>
+                    <a href="index.html#booking-form" data-i18n="sub-hall">Hall Book for Party</a>
+                </div>
+            </li>
+            <li><a href="index.html#about" data-i18n="story">Story</a></li>
+            <li><a href="index.html#contact" data-i18n="contact">Contact</a></li>
+            <li><button id="lang-btn" class="glass-btn lang-btn">हिंदी</button></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="hero"
+        style="min-height: 40vh; height: auto; padding-top: 120px; align-items: center; justify-content: center; text-align: center;">
+        <div class="hero-content glass animate-enter">
+            <h1>Create Your <span style="color:var(--primary)">Masterpiece</span></h1>
+            <p>Customize your favorite dishes exactly how you want them.</p>
+        </div>
+    </header>
+
+    <!-- Build Recipe Section -->
+    <section id="custom-builder" style="padding: 2rem 5%;">
+        <div class="glass" style="max-width: 900px; margin: 0 auto; padding: 2rem; border-radius: 16px;">
+
+            <!-- Category Tabs -->
+            <div class="custom-tabs"
+                style="display:flex; justify-content:center; gap:10px; margin-bottom:2rem; flex-wrap:wrap;">
+                <button class="tab-btn active" data-tab="burger">Burger</button>
+                <button class="tab-btn" data-tab="chowmein">Chowmein</button>
+                <button class="tab-btn" data-tab="manchurian">Manchurian</button>
+                <button class="tab-btn" data-tab="pasta">Pasta</button>
+                <button class="tab-btn" data-tab="beverage">Beverages</button>
+            </div>
+
+            <!-- --- BURGER FORM --- -->
+            <div id="burger-form" class="build-form active">
+                <h3 style="text-align:center; color:var(--secondary); margin-bottom:1.5rem;">CRAFT YOUR BURGER</h3>
+                <div class="byob-grid">
+                    <!-- Base -->
+                    <div>
+                        <h4 style="color:var(--primary); margin-bottom:1rem;">1. Choose Base</h4>
+                        <div class="ingredient-options">
+                            <label class="ingredient-card">
+                                <input type="radio" name="b_base" value="Regular Bun" data-price="49" checked>
+                                <div class="card-content">Regular Bun <br><small>₹49</small></div>
+                            </label>
+                            <label class="ingredient-card">
+                                <input type="radio" name="b_base" value="Whole Wheat Bun" data-price="59">
+                                <div class="card-content">Whole Wheat <br><small>₹59</small></div>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Patty -->
+                    <div>
+                        <h4 style="color:var(--primary); margin:1.5rem 0 1rem;">2. Choose Patty</h4>
+                        <div class="ingredient-options">
+                            <label class="ingredient-card">
+                                <input type="radio" name="b_patty" value="Veg Patty" data-price="0" checked>
+                                <div class="card-content">Veg Patty</div>
+                            </label>
+                            <label class="ingredient-card">
+                                <input type="radio" name="b_patty" value="Paneer Patty" data-price="20">
+                                <div class="card-content">Paneer <br><small>+₹20</small></div>
+                            </label>
+                            <label class="ingredient-card">
+                                <input type="radio" name="b_patty" value="Double Veg Patty" data-price="30">
+                                <div class="card-content">Double Veg <br><small>+₹30</small></div>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Toppings -->
+                    <div style="grid-column: 1 / -1;">
+                        <h4 style="color:var(--primary); margin:1.5rem 0 1rem;">3. Add Toppings</h4>
+                        <div class="ingredient-options">
+                            <label class="ingredient-card">
+                                <input type="checkbox" name="b_addons" value="Cheese Slice" data-price="15">
+                                <div class="card-content">Cheese Slice <br><small>+₹15</small></div>
+                            </label>
+                            <label class="ingredient-card">
+                                <input type="checkbox" name="b_addons" value="Jalapenos" data-price="10">
+                                <div class="card-content">Jalapenos <br><small>+₹10</small></div>
+                            </label>
+                            <label class="ingredient-card">
+                                <input type="checkbox" name="b_addons" value="Extra Sauce" data-price="5">
+                                <div class="card-content">Extra Sauce <br><small>+₹5</small></div>
+                            </label>
+                            <label class="ingredient-card">
+                                <input type="checkbox" name="b_addons" value="Peri Peri Sprinkles" data-price="5">
+                                <div class="card-content">Peri Peri <br><small>+₹5</small></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- --- CHOWMEIN FORM --- -->
+            <div id="chowmein-form" class="build-form" style="display:none;">
+                <h3 style="text-align:center; color:var(--secondary); margin-bottom:1.5rem;">WOK YOUR WAY (CHOWMEIN)
+                </h3>
+                <div class="byob-grid">
+                    <!-- Quantity -->
+                    <div>
+                        <h4 style="color:var(--primary); margin-bottom:1rem;">1. Size</h4>
+                        <div class="ingredient-options">
+                            <label class="ingredient-card">
+                                <input type="radio" name="c_size" value="Half Plate" data-price="60" checked>
+                                <div class="card-content">Half Plate <br><small>₹60</small></div>
+                            </label>
+                            <label class="ingredient-card">
+                                <input type="radio" name="c_size" value="Full Plate" data-price="100">
+                                <div class="card-content">Full Plate <br><small>₹100</small></div>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Spice -->
+                    <div>
+                        <h4 style="color:var(--primary); margin-bottom:1rem;">2. Spice Level</h4>
+                        <div class="ingredient-options">
+                            <label class="ingredient-card">
+                                <input type="radio" name="c_spice" value="Medium" checked>
+                                <div class="card-content">Medium</div>
+                            </label>
+                            <label class="ingredient-card">
+                                <input type="radio" name="c_spice" value="Spicy">
+                                <div class="card-content">Spicy 🌶️</div>
+                            </label>
+                            <label class="ingredient-card">
+                                <input type="radio" name="c_spice" value="Extra Spicy">
+                                <div class="card-content">Fiery 🔥</div>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Addons -->
+                    <div style="grid-column: 1 / -1;">
+                        <h4 style="color:var(--primary); margin:1.5rem 0 1rem;">3. Add-ons</h4>
+                        <div class="ingredient-options">
+                            <label class="ingredient-card">
+                                <input type="checkbox" name="c_addons" value="Paneer Cubes" data-price="20">
+                                <div class="card-content">Paneer Cubes <br><small>+₹20</small></div>
+                            </label>
+                            <label class="ingredient-card">
+                                <input type="checkbox" name="c_addons" value="Manchurian Ball" data-price="10">
+                                <div class="card-content">Manchurian Ball <br><small>+₹10</small></div>
+                            </label>
+                            <label class="ingredient-card">
+                                <input type="checkbox" name="c_addons" value="Extra Schezwan Sauce" data-price="5">
+                                <div class="card-content">Schezwan Sauce <br><small>+₹5</small></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- --- MANCHURIAN FORM --- -->
+            <div id="manchurian-form" class="build-form" style="display:none;">
+                <h3 style="text-align:center; color:var(--secondary); margin-bottom:1.5rem;">MANCHURIAN MADNESS</h3>
+                <div class="byob-grid">
+                    <!-- Type -->
+                    <div>
+                        <h4 style="color:var(--primary); margin-bottom:1rem;">1. Type</h4>
+                        <div class="ingredient-options">
+                            <label class="ingredient-card">
+                                <input type="radio" name="m_type" value="Dry" data-price="70" checked>
+                                <div class="card-content">Dry <br><small>₹70</small></div>
+                            </label>
+                            <label class="ingredient-card">
+                                <input type="radio" name="m_type" value="Gravy" data-price="80">
+                                <div class="card-content">Gravy <br><small>₹80</small></div>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Size -->
+                    <div>
+                        <h4 style="color:var(--primary); margin-bottom:1rem;">2. Size</h4>
+                        <div class="ingredient-options">
+                            <label class="ingredient-card">
+                                <input type="radio" name="m_size" value="Half" data-price="0" checked>
+                                <div class="card-content">Half</div>
+                            </label>
+                            <label class="ingredient-card">
+                                <input type="radio" name="m_size" value="Full" data-price="50">
+                                <div class="card-content">Full <br><small>+₹50</small></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- --- PASTA FORM --- -->
+            <div id="pasta-form" class="build-form" style="display:none;">
+                <h3 style="text-align:center; color:var(--secondary); margin-bottom:1.5rem;">PERFECT PASTA</h3>
+                <div class="byob-grid">
+                    <div>
+                        <h4 style="color:var(--primary); margin-bottom:1rem;">1. Sauce</h4>
+                        <div class="ingredient-options">
+                            <label class="ingredient-card">
+                                <input type="radio" name="p_sauce" value="Red Sauce" data-price="80" checked>
+                                <div class="card-content">Red Sauce <br><small>₹80</small></div>
+                            </label>
+                            <label class="ingredient-card">
+                                <input type="radio" name="p_sauce" value="White Sauce" data-price="90">
+                                <div class="card-content">White Sauce <br><small>₹90</small></div>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="color:var(--primary); margin-bottom:1rem;">2. Add-ons</h4>
+                        <div class="ingredient-options">
+                            <label class="ingredient-card">
+                                <input type="checkbox" name="p_addons" value="Cheese" data-price="20">
+                                <div class="card-content">Extra Cheese <br><small>+₹20</small></div>
+                            </label>
+                            <label class="ingredient-card">
+                                <input type="checkbox" name="p_addons" value="Corn" data-price="10">
+                                <div class="card-content">Sweet Corn <br><small>+₹10</small></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- --- BEVERAGE FORM --- -->
+            <div id="beverage-form" class="build-form" style="display:none;">
+                <h3 style="text-align:center; color:var(--secondary); margin-bottom:1.5rem;">REFRESHING DRINKS</h3>
+                <div class="byob-grid">
+                    <div>
+                        <h4 style="color:var(--primary); margin-bottom:1rem;">1. Drink</h4>
+                        <div class="ingredient-options">
+                            <label class="ingredient-card">
+                                <input type="radio" name="bev_base" value="Cola" data-price="40" checked>
+                                <div class="card-content">Cola <br><small>₹40</small></div>
+                            </label>
+                            <label class="ingredient-card">
+                                <input type="radio" name="bev_base" value="Sprite" data-price="40">
+                                <div class="card-content">Sprite <br><small>₹40</small></div>
+                            </label>
+                            <label class="ingredient-card">
+                                <input type="radio" name="bev_base" value="Cold Coffee" data-price="60">
+                                <div class="card-content">Cold Coffee <br><small>₹60</small></div>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="color:var(--primary); margin-bottom:1rem;">2. Customization</h4>
+                        <div class="ingredient-options">
+                            <label class="ingredient-card">
+                                <input type="checkbox" name="bev_addons" value="Ice Cream Scoop" data-price="30">
+                                <div class="card-content">Ice Cream <br><small>+₹30</small></div>
+                            </label>
+                            <label class="ingredient-card">
+                                <input type="checkbox" name="bev_addons" value="Extra Chocolate" data-price="10">
+                                <div class="card-content">Choco Chips <br><small>+₹10</small></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total Price & Order -->
+            <div
+                style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap:wrap; gap:1rem;">
+                <div>
+                    <span style="color:#aaa;">Total Price:</span>
+                    <h2 style="color:var(--primary); margin:0;">₹<span id="custom-total">0</span></h2>
+                </div>
+                <button id="custom-order-btn" class="btn-primary" style="padding: 1rem 2rem; font-size:1.1rem;">
+                    Order This Recipe <i class="fab fa-whatsapp"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass" style="margin: 2rem 5%; border-radius: 16px;">
+        <p>&copy; 2026 Burger Kingdom. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js?v=2"></script>
+</body>
+
+</html>

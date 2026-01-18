@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger Kingdom | Best Fast Food in Town</title>
+    <link rel="icon" href="images/bg.png" type="image/png">
+    <meta name="description"
+        content="Experience the best Burgers, Chowmein, and Snacks at Burger Kingdom. Order online or book a party at Rai Bhawan.">
+
+    <!-- Open Graph / WhatsApp Sharing -->
+    <meta property="og:title" content="Burger Kingdom - Taste the Quality">
+    <meta property="og:description"
+        content="Order the juiciest Burgers and authentic Chinese in town. Click to view menu!">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=800">
+    <meta property="og:url" content="https://burgerkingdom.netlify.app">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- 1. Daily Specials Ticker -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            TODAY'S SPECIAL: Buy 1 Get 1 Free on all Burgers! &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; Happy Hour: 4 PM -
+            7 PM (20% OFF) &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; Call +91 77869 90999 for Home Delivery
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="glass animate-enter">
+        <div class="logo">BURGER<span style="color:var(--secondary)">KINGDOM</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html" data-i18n="home">Home</a></li>
+            <li><a href="menu.html" data-i18n="menu">Menu</a></li>
+            <li><a href="customize.html" style="color:var(--primary); font-weight:bold;">Build Recipe</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" style="cursor: pointer;" data-i18n="booking">Booking <i
+                        class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="#booking-form" data-i18n="sub-wedding">Shadi Vivah / Birthday</a>
+                    <a href="#booking-form" data-i18n="sub-hall">Hall Book for Party</a>
+                </div>
+            </li>
+            <li><a href="#about" data-i18n="story">Story</a></li>
+            <li><a href="#contact" data-i18n="contact">Contact</a></li>
+            <li><a href="#" class="btn-primary" style="padding: 0.5rem 1.5rem;">Order</a></li>
+            <li><button id="lang-btn" class="lang-btn">हिंदी</button></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content glass animate-enter delay-1">
+            <h1 class="animate-enter delay-2" data-i18n="hero-title">Taste the <br> <span
+                    style="color:var(--primary)">Quality</span></h1>
+            <p class="animate-enter delay-3" data-i18n="hero-desc">Premium Burgers, Authentic Chowmein, and Special
+                Snacks.</p>
+            <a href="menu.html" class="btn-primary animate-enter delay-3">View Full Menu <i
+                    class="fas fa-arrow-right"></i></a>
+        </div>
+    </header>
+
+    <!-- Featured Section -->
+    <section class="featured">
+        <h2 class="section-title animate-enter">Top Pics</h2>
+        <div class="food-grid">
+            <!-- Item 1 -->
+            <div class="food-card glass">
+                <div
+                    style="height:200px; background: rgba(0,0,0,0.3); border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:1rem;">
+                    <i class="fas fa-hamburger" style="font-size: 4rem; color: var(--secondary);"></i>
+                </div>
+                <h3 class="food-title" data-i18n="item-crispyburger">Crispy Special Burger</h3>
+                <p data-i18n="feat-desc-crispyburger" style="color:#aaa; font-size:0.9rem; line-height: 1.4;">Our Chef's
+                    Masterpiece. A double-coated
+                    crispy patty that stays crunchy till the last bite.</p>
+                <br>
+                <a href="menu.html" class="btn-primary">View Story</a>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="food-card glass" style="animation-delay: 0.1s;">
+                <div
+                    style="height:200px; background: rgba(0,0,0,0.3); border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:1rem;">
+                    <i class="fas fa-utensils" style="font-size: 4rem; color: var(--secondary);"></i>
+                </div>
+                <h3 class="food-title" data-i18n="item-specialchowmein">Special Chowmein</h3>
+                <p data-i18n="feat-desc-specialchowmein" style="color:#aaa; font-size:0.9rem; line-height: 1.4;">
+                    Wok-tossed at high heat to capture the smoky
+                    'dragon's breath' flavor with exotic veggies.</p>
+                <br>
+                <a href="menu.html" class="btn-primary">View Story</a>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="food-card glass" style="animation-delay: 0.2s;">
+                <div
+                    style="height:200px; background: rgba(0,0,0,0.3); border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:1rem;">
+                    <i class="fas fa-drumstick-bite" style="font-size: 4rem; color: var(--secondary);"></i>
+                </div>
+                <h3 class="food-title" data-i18n="item-tandooritikka">Tandoori Paneer Tikka</h3>
+                <p data-i18n="feat-desc-tandooritikka" style="color:#aaa; font-size:0.9rem; line-height: 1.4;">Marinated
+                    overnight and roasted in a
+                    traditional clay oven for that authentic charred taste.</p>
+                <br>
+                <a href="menu.html" class="btn-primary">View Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="glass" style="margin: 4rem 5%; padding: 3rem; border-radius:16px;">
+        <div class="animate-enter">
+            <h2 class="section-title" style="text-align: left; margin-bottom: 1rem;">Our Story</h2>
+            <p style="font-size: 1.1rem; line-height: 1.6; color: #ddd; max-width: 800px;">
+                Welcome to <strong>Burger Kingdom</strong>! We are dedicated to serving the finest fast food with a
+                touch of premium quality.
+                From our <span style="color:var(--secondary)">hand-crafted burgers</span> to our <span
+                    style="color:var(--secondary)">authentic indo-chinese</span> dishes, everything is prepared fresh
+                daily.
+                <br><br>
+                Whether you are craving a crunchy burger, a spicy chowmein, or just some comforting Dahi Bda, we have
+                something to satisfy every craving.
+            </p>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="featured">
+        <h2 class="section-title animate-enter">What People Say</h2>
+        <div class="food-grid">
+            <div class="glass testimonial-card animate-enter">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"The <strong>Dahi Bda</strong> is absolutely life-changing. Softest I've ever had!"</p>
+                <div style="margin-top:1rem; color:var(--primary); font-weight:bold;">- Anjali P.</div>
+            </div>
+            <div class="glass testimonial-card animate-enter" style="animation-delay: 0.1s;">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                <p>"Best place for evening snacks. The <strong>Rai Bhawan</strong> vibes are great."</p>
+                <div style="margin-top:1rem; color:var(--primary); font-weight:bold;">- Rahul S.</div>
+            </div>
+            <div class="glass testimonial-card animate-enter" style="animation-delay: 0.2s;">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Crispy Burger is actually crispy. Highly recommended!"</p>
+                <div style="margin-top:1rem; color:var(--primary); font-weight:bold;">- Priya K.</div>
+            </div>
+        </div>
+    </section>
+
+    </section>
+
+
+
+    <!-- 3. Book a Party Section -->
+    <section class="glass" style="margin: 4rem 5%; padding: 3rem; border-radius:16px;">
+        <div class="animate-enter" style="text-align:center;">
+            <h2 class="section-title" data-i18n="booking-title">Booking</h2>
+            <p style="color:#ccc; margin-bottom:2rem;">Celebrating a birthday or anniversary? Let us host you!</p>
+
+            <form id="booking-form" class="booking-form">
+                <input type="text" id="booking-name" placeholder="Your Name" class="form-input" required>
+                <input type="tel" id="booking-phone" placeholder="Phone Number" class="form-input" required>
+                <select id="booking-type" class="form-input" style="color:#aaa;">
+                    <option>Event Type</option>
+                    <option>Wedding / Engagement</option>
+                    <option>Birthday Party</option>
+                    <option>Hall Booking (Full)</option>
+                    <option>Other</option>
+                </select>
+                <select id="booking-guests" class="form-input" style="color:#aaa;">
+                    <option>Number of Guests</option>
+                    <option>10-20</option>
+                    <option>20-50</option>
+                    <option>50+</option>
+                </select>
+                <input type="date" id="booking-date" class="form-input" style="color:#aaa;">
+                <button type="submit" class="btn-primary" style="border:none; cursor:pointer;">Request Booking</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="padding: 4rem 5%;">
+        <h2 class="section-title animate-enter">Visit Us</h2>
+
+        <div class="map-container animate-enter" style="margin-bottom:2rem;">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14349.529322285!2d83.5658!3d26.0354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDAyJzA3LjQiTiA4M8KwMzMnNTYuOSJF!5e0!3m2!1sen!2sin!4v1642866000000!5m2!1sen!2sin"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+
+            <!-- Location Card -->
+            <div class="glass animate-enter" style="padding: 2rem; width: 300px; text-align: center;">
+                <i class="fas fa-map-marker-alt"
+                    style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                <h3>Location</h3>
+                <p style="color:#ccc; margin-top: 0.5rem;">Kopaganj Kasara Mod,<br>Rai Bhawan, 275305</p>
+            </div>
+
+            <!-- Hours Card -->
+            <div class="glass animate-enter"
+                style="padding: 2rem; width: 300px; text-align: center; animation-delay: 0.1s;">
+                <i class="fas fa-clock" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                <h3>Opening Hours</h3>
+                <p style="color:#ccc; margin-top: 0.5rem;">Daily: 10:00 AM - 11:00 PM</p>
+            </div>
+
+            <!-- Call Card -->
+            <div class="glass animate-enter"
+                style="padding: 2rem; width: 300px; text-align: center; animation-delay: 0.2s;">
+                <i class="fas fa-phone-alt" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                <h3>Contact</h3>
+                <p style="color:#ccc; margin-top: 0.5rem;">+91 77869 90999</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="glass" style="margin: 2rem 5%; border-radius: 16px;">
+        <p>&copy; 2026 Burger Kingdom. All rights reserved.</p>
+        <div style="margin-top: 1rem; font-size: 1.5rem;">
+            <i class="fab fa-instagram" style="margin: 0 10px; cursor: pointer; transition: 0.3s; color:white;"></i>
+            <i class="fab fa-facebook" style="margin: 0 10px; cursor: pointer; transition: 0.3s; color:white;"></i>
+            <i class="fab fa-twitter" style="margin: 0 10px; cursor: pointer; transition: 0.3s; color:white;"></i>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/917786990999?text=Hi%20Burger%20Kingdom,%20I%20would%20like%20to%20order!"
+        class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Spin the Wheel Float Button -->
+    <div id="spin-float-btn" class="glass"
+        style="position: fixed; bottom: 150px; right: 20px; padding: 12px; border-radius: 50%; cursor: pointer; border: 2px solid gold; z-index: 999; animation: pulse-red 2s infinite;">
+        <i class="fas fa-gift" style="color: gold; font-size: 1.5rem;"></i>
+    </div>
+
+    <!-- Spin the Wheel Modal -->
+    <div id="spin-modal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 3000; justify-content: center; align-items: center; flex-direction: column;">
+        <div style="position: relative;">
+            <canvas id="wheel-canvas" width="300" height="300"></canvas>
+            <div id="spin-arrow"
+                style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-top: 20px solid white; z-index: 10;">
+            </div>
+        </div>
+        <button id="spin-btn" class="btn-primary"
+            style="margin-top: 2rem; background: gold; color: #333; font-weight: bold;">SPIN NOW!</button>
+        <button id="close-spin"
+            style="margin-top: 1rem; background: transparent; border: 1px solid white; color: white; padding: 5px 15px; border-radius: 20px; cursor: pointer;">Close</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
