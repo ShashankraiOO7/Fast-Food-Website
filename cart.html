@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart | Burger Kingdom</title>
+    <link rel="icon" href="images/bg.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="glass animate-enter">
+        <div class="logo">BURGER<span style="color:var(--secondary)">KINGDOM</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html" data-i18n="home">Home</a></li>
+            <li><a href="menu.html" data-i18n="menu" style="color:var(--secondary)">Menu</a></li>
+            <li><a href="javascript:void(0)" style="color:var(--primary); font-weight:bold;">Cart</a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Cart Section -->
+    <section class="featured" style="padding-top: 150px; min-height: 100vh;">
+        <h2 class="section-title animate-enter" style="margin-bottom: 2rem;">Your Cart <i
+                class="fas fa-shopping-cart"></i></h2>
+
+        <div class="glass animate-enter" style="max-width: 600px; margin: 0 auto; padding: 2rem;">
+            <div id="cart-page-items" style="margin-bottom: 2rem;">
+                <!-- Items will be injected here via JS -->
+                <p style="color: #ccc; text-align: center;">Loading your delicious choices...</p>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; text-align: right;">
+                <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem; color: white;">Total Items: <span
+                        id="cart-page-total">0</span></p>
+
+                <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+                    <a href="menu.html" class="btn-primary"
+                        style="background: transparent; border: 1px solid var(--primary); color: var(--primary);">Add
+                        More</a>
+                    <button id="cart-page-checkout" class="btn-primary" style="width: auto;">
+                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trending Items Section -->
+        <h3 class="section-title animate-enter" style="margin-top: 4rem; font-size: 2rem;">Trending Now 🔥</h3>
+        <div id="cart-trending-grid" class="food-grid animate-enter" style="margin-bottom: 4rem;">
+            <!-- Trending Items Injected via JS -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass" style="margin: 2rem 5%; border-radius: 16px;">
+        <p>&copy; 2026 Burger Kingdom. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

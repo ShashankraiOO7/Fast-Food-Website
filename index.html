@@ -53,7 +53,7 @@
             </li>
             <li><a href="#about" data-i18n="story">Story</a></li>
             <li><a href="#contact" data-i18n="contact">Contact</a></li>
-            <li><a href="#" class="btn-primary" style="padding: 0.5rem 1.5rem;">Order</a></li>
+            <li><a href="cart.html" class="btn-primary" style="padding: 0.5rem 1.5rem;">Order</a></li>
             <li><button id="lang-btn" class="lang-btn">हिंदी</button></li>
         </ul>
         <div class="hamburger">
@@ -122,19 +122,53 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="glass" style="margin: 4rem 5%; padding: 3rem; border-radius:16px;">
-        <div class="animate-enter">
-            <h2 class="section-title" style="text-align: left; margin-bottom: 1rem;">Our Story</h2>
-            <p style="font-size: 1.1rem; line-height: 1.6; color: #ddd; max-width: 800px;">
-                Welcome to <strong>Burger Kingdom</strong>! We are dedicated to serving the finest fast food with a
-                touch of premium quality.
-                From our <span style="color:var(--secondary)">hand-crafted burgers</span> to our <span
-                    style="color:var(--secondary)">authentic indo-chinese</span> dishes, everything is prepared fresh
-                daily.
-                <br><br>
-                Whether you are craving a crunchy burger, a spicy chowmein, or just some comforting Dahi Bda, we have
-                something to satisfy every craving.
-            </p>
+    <section id="about" class="glass"
+        style="margin: 4rem 5%; padding: 3rem; border-radius:16px; min-height: fit-content; height: auto; overflow: visible;">
+        <div class="">
+            <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;" data-i18n="story-title">The Royal
+                Journey</h2>
+
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h3 style="color:var(--primary); margin-bottom:1rem;" data-i18n="story-subtitle1">From Humble
+                        Beginnings</h3>
+                    <p style="font-size: 1rem; line-height: 1.8; color: #ddd; margin-bottom: 1.5rem;"
+                        data-i18n="story-text1">
+                        It all started at <strong>Rai Bhawan</strong> with a simple mission: to bring world-class fast
+                        food flavors to our local community.
+                        What began as a small passion project has now grown into the <strong>Burger Kingdom</strong>—a
+                        place where every meal is treated like a royal feast.
+                    </p>
+                    <p style="font-size: 1rem; line-height: 1.8; color: #ddd;" data-i18n="story-text2">
+                        Our founder believed that fast food shouldn't just be 'fast'—it should be fresh, flavorful, and
+                        memorable. That's why we don't just assemble burgers; we craft them.
+                    </p>
+                </div>
+
+                <div style="flex: 1; min-width: 300px;">
+                    <h3 style="color:var(--primary); margin-bottom:1rem;" data-i18n="story-subtitle2">Our Secret Process
+                    </h3>
+                    <ul style="list-style: none; padding: 0; color: #ccc;">
+                        <li style="margin-bottom: 1rem;" data-i18n="story-point1"><i class="fas fa-check-circle"
+                                style="color:var(--secondary); margin-right:10px;"></i> <strong>Fresh Grind:</strong> We
+                            grind our own spices daily to ensure the aroma hits you before the taste does.</li>
+                        <li style="margin-bottom: 1rem;" data-i18n="story-point2"><i class="fas fa-check-circle"
+                                style="color:var(--secondary); margin-right:10px;"></i> <strong>Farm to Fork:</strong>
+                            All our veggies—lettuce, tomatoes, onions—are sourced from local farms every morning.</li>
+                        <li style="margin-bottom: 1rem;" data-i18n="story-point3"><i class="fas fa-check-circle"
+                                style="color:var(--secondary); margin-right:10px;"></i> <strong>Chef's Magic:</strong>
+                            Our sauces are house-made secrets. You won't find these flavors in a bottle anywhere else.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                <p style="font-size: 1.2rem; font-style: italic; color: var(--primary);" data-i18n="story-quote">
+                    "We don't serve customers; we serve guests in our Kingdom."
+                </p>
+            </div>
         </div>
     </section>
 
@@ -167,33 +201,57 @@
 
 
 
-    <!-- 3. Book a Party Section -->
-    <section class="glass" style="margin: 4rem 5%; padding: 3rem; border-radius:16px;">
-        <div class="animate-enter" style="text-align:center;">
-            <h2 class="section-title" data-i18n="booking-title">Booking</h2>
-            <p style="color:#ccc; margin-bottom:2rem;">Celebrating a birthday or anniversary? Let us host you!</p>
+    <!-- Dual Section: Booking & Feedback -->
+    <div class="dual-container">
 
-            <form id="booking-form" class="booking-form">
-                <input type="text" id="booking-name" placeholder="Your Name" class="form-input" required>
-                <input type="tel" id="booking-phone" placeholder="Phone Number" class="form-input" required>
-                <select id="booking-type" class="form-input" style="color:#aaa;">
-                    <option>Event Type</option>
-                    <option>Wedding / Engagement</option>
-                    <option>Birthday Party</option>
-                    <option>Hall Booking (Full)</option>
-                    <option>Other</option>
-                </select>
-                <select id="booking-guests" class="form-input" style="color:#aaa;">
-                    <option>Number of Guests</option>
-                    <option>10-20</option>
-                    <option>20-50</option>
-                    <option>50+</option>
-                </select>
-                <input type="date" id="booking-date" class="form-input" style="color:#aaa;">
-                <button type="submit" class="btn-primary" style="border:none; cursor:pointer;">Request Booking</button>
+        <!-- 3. Book a Party Section -->
+        <div id="booking-section" class="glass dual-item animate-enter">
+            <div style="text-align:center;">
+                <h2 class="section-title" data-i18n="booking-title" style="margin-bottom: 1.5rem;">Booking</h2>
+                <p style="color:#ccc; margin-bottom:1.5rem; font-size: 0.9rem;">Celebrating a birthday or anniversary?
+                    Let us host you!</p>
+
+                <form id="booking-form" class="booking-form">
+                    <input type="text" id="booking-name" placeholder="Your Name" class="form-input" required>
+                    <input type="tel" id="booking-phone" placeholder="Phone Number" class="form-input" required>
+                    <select id="booking-type" class="form-input" style="color:#aaa;">
+                        <option>Event Type</option>
+                        <option>Wedding / Engagement</option>
+                        <option>Birthday Party</option>
+                        <option>Hall Booking (Full)</option>
+                        <option>Other</option>
+                    </select>
+                    <select id="booking-guests" class="form-input" style="color:#aaa;">
+                        <option>Number of Guests</option>
+                        <option>10-20</option>
+                        <option>20-50</option>
+                        <option>50+</option>
+                    </select>
+                    <input type="date" id="booking-date" class="form-input" style="color:#aaa;">
+                    <button type="submit" class="btn-primary"
+                        style="border:none; cursor:pointer; width:100%; margin-top:10px;">Request Booking</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Feedback Section -->
+        <div id="feedback-section" class="glass dual-item animate-enter" style="animation-delay: 0.2s;">
+            <h2 class="section-title" style="text-align:center; margin-bottom: 1.5rem;">Your Feedback</h2>
+            <p style="text-align:center; color:#ccc; margin-bottom:1.5rem; font-size: 0.9rem;">Help us improve with your
+                valuable suggestions.</p>
+
+            <form id="feedback-form" style="display: flex; flex-direction: column; gap: 15px;">
+                <input type="text" id="feedback-name" placeholder="Your Name (Optional)" class="form-input"
+                    style="color: white; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+                <textarea id="feedback-text" placeholder="Write your Review, Suggest Improvement..." class="form-input"
+                    style="height: 180px; color: white; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);"
+                    required></textarea>
+                <button type="submit" class="btn-primary" style="border:none; cursor:pointer; width:100%;">Send Feedback
+                    <i class="fas fa-paper-plane"></i></button>
             </form>
         </div>
-    </section>
+
+    </div>
 
     <!-- Contact Section -->
     <section id="contact" style="padding: 4rem 5%;">
@@ -220,7 +278,8 @@
                 style="padding: 2rem; width: 300px; text-align: center; animation-delay: 0.1s;">
                 <i class="fas fa-clock" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
                 <h3>Opening Hours</h3>
-                <p style="color:#ccc; margin-top: 0.5rem;">Daily: 10:00 AM - 11:00 PM</p>
+                <p style="color:#ccc; margin-top: 0.5rem;">Daily: 2 P.M. - 10 P.M.<br><span
+                        style="color:#ff4444; font-size:0.9em;">(Monday Closed)</span></p>
             </div>
 
             <!-- Call Card -->
@@ -228,7 +287,8 @@
                 style="padding: 2rem; width: 300px; text-align: center; animation-delay: 0.2s;">
                 <i class="fas fa-phone-alt" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
                 <h3>Contact</h3>
-                <p style="color:#ccc; margin-top: 0.5rem;">+91 77869 90999</p>
+                <p style="margin-top: 0.5rem;"><a href="tel:+917786990999" style="color:#ccc; text-decoration:none;">+91
+                        77869 90999</a></p>
             </div>
         </div>
     </section>
@@ -269,7 +329,7 @@
             style="margin-top: 1rem; background: transparent; border: 1px solid white; color: white; padding: 5px 15px; border-radius: 20px; cursor: pointer;">Close</button>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=9"></script>
 </body>
 
 </html>

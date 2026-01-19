@@ -18,6 +18,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
+    line-height: 1.6;
 }
 
 /* --- BACKGROUND OPTIONS (Uncomment ONE to use) --- */
@@ -216,13 +217,20 @@ nav.scrolled {
 .btn-primary {
     background: var(--primary);
     color: black;
+    /* Text is black for readability on Neon Green */
     padding: 0.8rem 2rem;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 700;
     transition: transform 0.3s, box-shadow 0.3s;
-    border: none;
+    border: 2px solid var(--primary);
+    /* Added border for structure */
     display: inline-block;
+    cursor: pointer;
+    /* Ensure cursor is pointer */
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
 }
 
 .btn-primary:hover {
@@ -250,8 +258,9 @@ nav.scrolled {
 
 .hero h1 {
     font-size: 4rem;
-    line-height: 1.1;
     margin-bottom: 1rem;
+    line-height: 1.3;
+    /* Increased for title */
     background: linear-gradient(to right, #fff, #ccc);
     -webkit-background-clip: text;
     background-clip: text;
@@ -562,4 +571,101 @@ nav {
 .tab-btn.active::after {
     content: '👑';
     font-size: 0.8rem;
+}
+
+/* --- RESPONSIVENESS --- */
+
+/* 1. Mobile & Tablet (< 768px) */
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        right: 0px;
+        height: 100vh;
+        top: 0;
+        background: rgba(0, 0, 0, 0.95);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in;
+    }
+
+    .nav-links.active {
+        transform: translateX(0%);
+    }
+
+    .hamburger {
+        display: block;
+        z-index: 2000;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .food-grid {
+        grid-template-columns: 1fr;
+        /* Stack cards */
+    }
+
+    .ticker {
+        font-size: 0.9rem;
+    }
+
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+    }
+}
+
+/* 2. TV & Large Screens (> 1920px) */
+@media (min-width: 1920px) {
+    body {
+        font-size: 1.2rem;
+        /* Scale up base text */
+    }
+
+    .hero h1 {
+        font-size: 6rem;
+    }
+
+    .section-title {
+        font-size: 4rem;
+    }
+
+    .food-card {
+        padding: 3rem;
+    }
+
+    .container {
+        max-width: 1600px;
+        /* Constrain width on huge screens */
+        margin: 0 auto;
+    }
+}
+
+/* Side-by-Side Section Container */
+.dual-container {
+    display: flex;
+    gap: 2rem;
+    margin: 4rem 5%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.dual-item {
+    flex: 1;
+    min-width: 300px;
+    /* Stack on small screens */
+    padding: 2rem;
+    border-radius: 16px;
 }
