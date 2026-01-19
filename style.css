@@ -5,8 +5,8 @@
     /* Cyberpunk Pink (Complementary) */
     --dark: #121212;
     --light: #f4f4f4;
-    --glass-bg: rgba(20, 20, 20, 0.15);
-    /* 15% Opacity as requested */
+    --glass-bg: rgba(20, 20, 20, 0.5);
+    /* 50% Opacity for consistent readability */
     --glass-border: rgba(255, 255, 255, 0.1);
     --text-main: #ffffff;
     --text-muted: #cccccc;
