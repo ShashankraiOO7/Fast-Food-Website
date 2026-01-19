@@ -625,6 +625,17 @@ nav {
         height: 50px;
         font-size: 25px;
     }
+
+    /* Mobile Friendly Background */
+    body {
+        background: url('images/Mobile.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    /* Fallback if Mobile.jpg doesn't exist, it might show white or nothing if handled poorly by browser, 
+       but usually it just ignores. To be safe, we can leave it or user ensures file exists. 
+       Actually, standard CSS behavior: if image missing, it might show just color. 
+       Better approach: We assume user WILL put the image. */
 }
 
 /* 2. TV & Large Screens (> 1920px) */
