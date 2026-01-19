@@ -76,15 +76,15 @@ document.addEventListener('DOMContentLoaded', () => {
             'item-dahibda': 'Dahi Bda', 'desc-dahibda': 'A cool explosion! Cloud-soft lentil dumplings soaked in chilled, creamy yogurt, topped with tangy tamarind chutney and a sprinkle of roasted spices.',
 
             // Story Section
-            'story-title': 'The Royal Journey',
+            'story-title': 'The Zaika Story',
             'story-subtitle1': 'From Humble Beginnings',
-            'story-text1': 'It all started at <strong>Rai Bhawan</strong> with a simple mission: to bring world-class fast food flavors to our local community. What began as a small passion project has now grown into the <strong>Burger Kingdom</strong> - a place where every meal is treated like a royal feast.',
-            'story-text2': 'Our founder believed that fast food shouldn\'t just be \'fast\' - it should be fresh, flavorful, and memorable. That\'s why we don\'t just assemble burgers; we craft them.',
+            'story-text1': 'It all started at <strong>Rai Bhawan</strong> with a simple dream: to bring authentic Indian street food flavors to our beloved community. What began as a small passion project has now blossomed into <strong>Zaika Junction</strong> - a place where every bite tells a story of taste and tradition.',
+            'story-text2': 'Our founder believed that food is not just about hunger - it\'s about memories, emotions, and pure satisfaction. That\'s why we don\'t just cook; we create experiences.',
             'story-subtitle2': 'Our Secret Process',
             'story-point1': '<i class="fas fa-check-circle" style="color:var(--secondary); margin-right:10px;"></i> <strong>Fresh Grind:</strong> We grind our own spices daily to ensure the aroma hits you before the taste does.',
             'story-point2': '<i class="fas fa-check-circle" style="color:var(--secondary); margin-right:10px;"></i> <strong>Farm to Fork:</strong> All our veggies - lettuce, tomatoes, onions - are sourced from local farms every morning.',
             'story-point3': '<i class="fas fa-check-circle" style="color:var(--secondary); margin-right:10px;"></i> <strong>Chef\'s Magic:</strong> Our sauces are house-made secrets. You won\'t find these flavors in a bottle anywhere else.',
-            'story-quote': '"We don\'t serve customers; we serve guests in our Kingdom."',
+            'story-quote': '"Zaika matlab swad, aur Junction matlab milap—yahan har bite mein ghar ka pyaar milta hai."',
 
             // Featured Items
             'feat-desc-crispyburger': 'Our Chef\'s Masterpiece. A double-coated crispy patty that stays crunchy till the last bite.',
@@ -132,15 +132,15 @@ document.addEventListener('DOMContentLoaded', () => {
             'item-dahibda': 'दही बड़ा', 'desc-dahibda': 'ठंडक का धमाका! ठंडी, मलाईदार दही में भिगोए गए बादल जैसे नरम दाल के बड़े, ऊपर से तीखी इमली की चटनी और भुने हुए जीरे की बारिश।',
 
             // Story Section (Hindi)
-            'story-title': 'शाही सफर',
+            'story-title': 'ज़ायका की कहानी',
             'story-subtitle1': 'एक विनम्र शुरुआत',
-            'story-text1': 'यह सब <strong>राय भवन</strong> से एक साधारण मिशन के साथ शुरू हुआ: हमारे स्थानीय समुदाय के लिए विश्व स्तरीय फास्ट फूड का स्वाद लाना। जो एक छोटे से प्रोजेक्ट के रूप में शुरू हुआ था, वह अब <strong>बर्गर किंगडम</strong> बन गया है - एक ऐसी जगह जहां हर भोजन को शाही दावत की तरह माना जाता है।',
-            'story-text2': 'हमारे संस्थापक का मानना था कि फास्ट फूड सिर्फ \'फास्ट\' नहीं होना चाहिए—इसे ताज़ा, स्वादिष्ट और यादगार होना चाहिए। इसलिए हम सिर्फ बर्गर बनाते नहीं हैं; हम उन्हें तराशते हैं।',
+            'story-text1': 'यह सब <strong>राय भवन</strong> से एक सपने के साथ शुरू हुआ: हमारे प्यारे समुदाय के लिए असली भारतीय स्ट्रीट फूड का स्वाद लाना। जो एक छोटे से प्रोजेक्ट के रूप में शुरू हुआ था, वह अब <strong>ज़ायका जंक्शन</strong> बन गया है - एक ऐसी जगह जहां हर निवाला स्वाद और परंपरा की कहानी कहता है।',
+            'story-text2': 'हमारे संस्थापक का मानना था कि खाना सिर्फ भूख के बारे में नहीं है—यह यादों, भावनाओं और खुशियों के बारे में है। इसलिए हम सिर्फ खाना नहीं बनाते; हम अनुभव बनाते हैं।',
             'story-subtitle2': 'हमारी गुप्त प्रक्रिया',
             'story-point1': '<i class="fas fa-check-circle" style="color:var(--secondary); margin-right:10px;"></i> <strong>ताज़ा पिसाई:</strong> हम अपने मसाले रोज़ पीसते हैं ताकि स्वाद से पहले आपको खुशबू का अहसास हो।',
             'story-point2': '<i class="fas fa-check-circle" style="color:var(--secondary); margin-right:10px;"></i> <strong>खेत से प्लेट तक:</strong> हमारी सभी सब्जियां—सलाद पत्ता, टमाटर, प्याज—हर सुबह स्थानीय खेतों से मंगाई जाती हैं।',
             'story-point3': '<i class="fas fa-check-circle" style="color:var(--secondary); margin-right:10px;"></i> <strong>शेफ का जादू:</strong> हमारे सॉस घर के बने गुप्त नुस्खे हैं। ये स्वाद आपको किसी बोतल में नहीं मिलेंगे।',
-            'story-quote': '"हम ग्राहकों की सेवा नहीं करते; हम अपने किंगडम में मेहमानों की सेवा करते हैं।"',
+            'story-quote': '"ज़ायका मतलब स्वाद, और जंक्शन मतलब मिलाप—यहाँ हर निवाले में घर का प्यार मिलता है।"',
 
             // Featured Items (Hindi)
             'feat-desc-crispyburger': 'हमारे शेफ की कृत। डबल-कोटेड कुरकुरी टिक्की जो आखिरी निवाले तक करारी रहती है।',
@@ -367,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cartPageCheckout.addEventListener('click', () => {
             if (cart.length === 0) return;
 
-            let message = "Hi Burger Kingdom, I would like to place an order:%0a%0a";
+            let message = "Hi Zaika Junction, I would like to place an order:%0a%0a";
 
             cart.forEach(item => {
                 const offerText = getDailyOffer(item.name);
@@ -466,7 +466,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const activeForm = document.getElementById(`${activeCategory}-form`);
             if (!activeForm) return;
 
-            let message = `Hi Burger Kingdom! I built a custom *${activeCategory.toUpperCase()}* recipe:%0a%0a`;
+            let message = `Hi Zaika Junction! I built a custom *${activeCategory.toUpperCase()}* recipe:%0a%0a`;
 
             // Gather details from Radio buttons
             activeForm.querySelectorAll('input[type="radio"]:checked').forEach(input => {
@@ -508,7 +508,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const guests = document.getElementById('booking-guests').value;
             const date = document.getElementById('booking-date').value;
 
-            const message = `Hi Burger Kingdom! I want to request a booking:%0a%0a` +
+            const message = `Hi Zaika Junction! I want to request a booking:%0a%0a` +
                 `👤 Name: ${name}%0a` +
                 `📞 Phone: ${phone}%0a` +
                 `🎉 Type: ${type}%0a` +
