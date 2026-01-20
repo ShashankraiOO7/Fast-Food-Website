@@ -424,6 +424,33 @@ footer {
     animation: pulse-red 2s infinite;
 }
 
+/* Heart Beat Animation for Developer Credit */
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.2);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    75% {
+        transform: scale(1.2);
+    }
+}
+
+.heart-beat {
+    display: inline-block;
+    animation: heartbeat 1.5s ease-in-out infinite;
+    color: #ff4444;
+}
+
 /* 1. Daily Specials Ticker */
 .ticker-wrap {
     position: fixed;
