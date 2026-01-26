@@ -13,9 +13,10 @@
     <meta property="og:description" content="Explore our delicious menu of Burgers, Chowmein, and more.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=800">
 
-    <link rel="stylesheet" href="style.css?v=13">
+    <link rel="stylesheet" href="style.css?v=15">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
@@ -34,7 +35,8 @@
         <ul class="nav-links">
             <li><a href="index.html" data-i18n="home">Home</a></li>
             <li><a href="menu.html" data-i18n="menu" style="color:var(--secondary)">Menu</a></li>
-            <li><a href="customize.html" style="color:var(--primary); font-weight:bold;">Build Recipe</a></li>
+            <li><a href="customize.html" style="color:var(--primary); font-weight:bold;" data-i18n="build-recipe">Build
+                    Recipe</a></li>
             <li class="dropdown">
                 <a href="javascript:void(0)" style="cursor: pointer;" data-i18n="booking">Booking <i
                         class="fas fa-caret-down"></i></a>
@@ -45,9 +47,11 @@
             </li>
             <li><a href="index.html#about" data-i18n="story">Story</a></li>
             <li><a href="index.html#contact" data-i18n="contact">Contact</a></li>
-            <li><a href="cart.html" class="btn-primary" style="padding: 0.5rem 1.5rem;">Order</a></li>
+            <li><a href="cart.html" class="btn-primary" style="padding: 0.5rem 1.5rem;" data-i18n="order-btn">ORDER</a>
+            </li>
             <li><button id="lang-btn" class="lang-btn">हिंदी</button></li>
         </ul>
+
         <div class="hamburger">
             <i class="fas fa-bars"></i>
         </div>
@@ -72,233 +76,284 @@
         </div>
 
         <!-- Category: Burgers -->
-        <h2 class="section-title animate-enter" data-i18n="cat-burgers"><i class="fas fa-hamburger"
-                style="margin-right:10px; color:var(--primary)"></i>Burgers</h2>
-        <p class="section-desc animate-enter" data-i18n="desc-burgers"
-            style="text-align:center; color:#ccc; margin-bottom:2rem; max-width:600px; margin-left:auto; margin-right:auto;">
+        <h2 class="category-title animate-enter" data-i18n="cat-burgers">Burgers</h2>
+        <p class="category-description animate-enter" data-i18n="desc-burgers">
             The burger journey began in the late 19th century, evolving from a simple steak to a global icon. We honor
             this history by grilling our patties to perfection, ensuring every bite is a celebration of flavor.
         </p>
-        <div class="food-grid animate-enter">
+
+        <div id="grid-burgers" class="food-grid animate-enter">
             <div class="food-card glass">
+
                 <h3 class="food-title" data-i18n="item-vegburger">Classic Veg Burger</h3>
                 <p data-i18n="desc-vegburger" style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">A
                     symphony of farm-fresh crunch! Our golden-fried vegetable patty is nestled in a soft, toasted bun,
                     drizzled with our signature creamy tangy sauce and topped with crisp lettuce. A classic done right.
                 </p>
-                <button class="btn-primary add-to-cart"
-                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
-                        class="fas fa-plus"></i></button>
+                <div class="price-container"></div>
+                <span class="p-final" style="display:none;">49</span>
+                <span class="p-org" style="display:none;">49</span>
+                <span class="p-disc" style="display:none;">0</span>
+                <span class="p-offer" style="display:none;"></span>
             </div>
+
             <div class="food-card glass">
                 <h3 class="food-title" data-i18n="item-cheeseburger">Cheese Burger</h3>
                 <p data-i18n="desc-cheeseburger"
                     style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">Indulgence redefined. A
                     thick, juicy patty blanketed under a molten layer of premium cheddar cheese. Every bite is a gooey,
                     cheesy explosion that melts in your mouth.</p>
-                <button class="btn-primary add-to-cart"
-                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
-                        class="fas fa-plus"></i></button>
+                <div class="price-container"></div>
+                <span class="p-final" style="display:none;">69</span>
+                <span class="p-org" style="display:none;">69</span>
+                <span class="p-disc" style="display:none;">0</span>
             </div>
+
             <div class="food-card glass">
                 <h3 class="food-title" data-i18n="item-paneerburger">Paneer Burger</h3>
                 <p data-i18n="desc-paneerburger"
                     style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">Royal Indian fusion! A thick
                     slice of fresh, soft paneer, marinated in zesty spices and grilled to perfection. Paired with our
                     secret tandoori mayo for a smoky kick.</p>
-                <button class="btn-primary add-to-cart"
-                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
-                        class="fas fa-plus"></i></button>
+                <div class="price-container"></div>
+                <span class="p-final" style="display:none;">89</span>
+                <span class="p-org" style="display:none;">89</span>
+                <span class="p-disc" style="display:none;">0</span>
             </div>
+
             <div class="food-card glass">
                 <h3 class="food-title" data-i18n="item-crispyburger">Crispy Special Burger</h3>
                 <p data-i18n="desc-crispyburger"
                     style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">The King of Crunch!
                     Double-coated in our secret herb batter and fried to a golden crisp. It’s loud, it’s crunchy, and
                     it’s overflowing with flavors.</p>
-                <button class="btn-primary add-to-cart"
-                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
-                        class="fas fa-plus"></i></button>
+                <div class="price-container"></div>
+                <span class="p-final" style="display:none;">99</span>
+                <span class="p-org" style="display:none;">99</span>
+                <span class="p-disc" style="display:none;">0</span>
+                <span class="p-offer" style="display:none;"></span>
             </div>
+
         </div>
 
         <!-- Category: Chowmein -->
-        <h2 class="section-title animate-enter" data-i18n="cat-chowmein" style="margin-top:4rem;"><i
-                class="fas fa-utensils" style="margin-right:10px; color:var(--primary)"></i>Chowmein</h2>
-        <p class="section-desc animate-enter" data-i18n="desc-chowmein"
-            style="text-align:center; color:#ccc; margin-bottom:2rem; max-width:600px; margin-left:auto; margin-right:auto;">
-            Originating from China and loved by India. Our Chowmein is wok-tossed at high flames to capture the 'Wok
-            Hei' - the breath of the wok, giving it that distinct smoky flavor.
+        <h2 class="category-title animate-enter" data-i18n="cat-chowmein">Chowmein</h2>
+        <p class="category-description animate-enter" data-i18n="desc-chowmein">
+            Indulge in our signature wok-tossed noodles, where every strand is infused with the perfect balance of
+            spices
+            and the authentic smoky flavor of the wok.
         </p>
-        <div class="food-grid animate-enter">
+        <div id="grid-chowmein" class="food-grid animate-enter">
             <div class="food-card glass">
+
                 <h3 class="food-title" data-i18n="item-vegchowmein">Veg Chowmein</h3>
                 <p data-i18n="desc-vegchowmein" style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">
-                    Street-style magic! Wok-tossed noodles dancing with crunchy cabbage, carrots, and capsicum, all
-                    coated in a smoky soy-chili glaze. The authentic taste of Desi Chinese.</p>
-                <button class="btn-primary add-to-cart"
-                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
-                        class="fas fa-plus"></i></button>
+                    Classic street-style wok-tossed noodles with fresh seasonal veggies.
+                </p>
+                <div class="price-container"></div>
+                <span class="p-final" style="display:none;">60</span>
+                <span class="p-org" style="display:none;">60</span>
+                <span class="p-disc" style="display:none;">0</span>
             </div>
             <div class="food-card glass">
                 <h3 class="food-title" data-i18n="item-paneerchowmein">Paneer Chowmein</h3>
                 <p data-i18n="desc-paneerchowmein"
-                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">Soft meets spicy. Fresh
-                    paneer cubes tossed with high-heat noodles and vegetables. The creamy texture of paneer balances the
-                    spicy kick of the sauces perfectly.</p>
-                <button class="btn-primary add-to-cart"
-                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
-                        class="fas fa-plus"></i></button>
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">
+                    Wok-tossed noodles loaded with soft paneer cubes and spicy sauces.
+                </p>
+                <div class="price-container"></div>
+                <span class="p-final" style="display:none;">80</span>
+                <span class="p-org" style="display:none;">80</span>
+                <span class="p-disc" style="display:none;">0</span>
+                <span class="p-offer" style="display:none;"></span>
             </div>
             <div class="food-card glass">
                 <h3 class="food-title" data-i18n="item-specialchowmein">Special Chowmein</h3>
                 <p data-i18n="desc-specialchowmein"
-                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">A carnival of flavors!
-                    Loaded
-                    with exotic vegetables and tossed in our secret spicy sauce blend. It's a party on your palate.</p>
-                <button class="btn-primary add-to-cart"
-                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
-                        class="fas fa-plus"></i></button>
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">A delightful mix of noodles,
+                    exotic vegetables, and our chef's special sauce.</p>
+                <div class="price-container"></div>
+                <span class="p-final" style="display:none;">95</span>
+                <span class="p-org" style="display:none;">95</span>
+                <span class="p-disc" style="display:none;">0</span>
             </div>
         </div>
 
-        <!-- Category: Manchurian & Rice -->
-        <h2 class="section-title animate-enter" data-i18n="cat-rice" style="margin-top:4rem;"><i
-                class="fas fa-bowl-rice" style="margin-right:10px; color:var(--primary)"></i>Rice & Manchurian</h2>
-        <p class="section-desc animate-enter" data-i18n="desc-rice"
-            style="text-align:center; color:#ccc; margin-bottom:2rem; max-width:600px; margin-left:auto; margin-right:auto;">
-            A fusion of bold flavors. Our Manchurian balls are handcrafted daily, and our rice is stir-fried to fluffy
-            perfection.
+        <!-- Category: Rice & Manchurian -->
+        <h2 class="category-title animate-enter" data-i18n="cat-rice">Rice & Manchurian</h2>
+        <p class="category-description animate-enter" data-i18n="desc-rice">
+            Experience the fusion of aromantic basmati rice and savory Manchurian balls, a classic Indo-Chinese comfort
+            meal.
         </p>
-        <div class="food-grid animate-enter">
+        <div id="grid-rice" class="food-grid animate-enter">
+            <!-- Item 1: Veg Manchurian -->
             <div class="food-card glass">
+
                 <h3 class="food-title" data-i18n="item-vegmanchurian">Veg Manchurian</h3>
                 <p data-i18n="desc-vegmanchurian"
-                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">Melt-in-your-mouth
-                    dumplings! Finely minced fresh veggies shaped into balls, fried golden, and simmered in a rich,
-                    glossy garlic-soy gravy. Absolute comfort food.</p>
-                <button class="btn-primary add-to-cart"
-                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
-                        class="fas fa-plus"></i></button>
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">
+                    Crispy veggie balls in a tangy, spicy ginger-garlic gravy.
+                </p>
+                <div class="price-container"></div>
+                <span class="p-final" style="display:none;">70</span>
+                <span class="p-org" style="display:none;">70</span>
+                <span class="p-disc" style="display:none;">0</span>
             </div>
+
+            <!-- Item 2: Paneer Manchurian -->
             <div class="food-card glass">
                 <h3 class="food-title" data-i18n="item-paneermanchurian">Paneer Manchurian</h3>
                 <p data-i18n="desc-paneermanchurian"
-                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">Crispy outside, soft inside!
-                    Batter-fried paneer cubes tossed in a tangy, spicy Manchurian sauce with plenty of garlic and green
-                    chilies.</p>
-                <button class="btn-primary add-to-cart"
-                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
-                        class="fas fa-plus"></i></button>
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">
+                    Soft paneer cubes tossed in classic Manchurian sauce.
+                </p>
+                <div class="price-container"></div>
+                <span class="p-final" style="display:none;">85</span>
+                <span class="p-org" style="display:none;">85</span>
+                <span class="p-disc" style="display:none;">0</span>
             </div>
+
+            <!-- Item 3: Veg Fried Rice -->
             <div class="food-card glass">
                 <h3 class="food-title" data-i18n="item-vegfriedrice">Veg Fried Rice</h3>
                 <p data-i18n="desc-vegfriedrice"
-                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">Aromatic Basmati bliss! Each
-                    grain is separate and fragrant, wok-tossed with colorful finely chopped veggies and a hint of white
-                    pepper.</p>
-                <button class="btn-primary add-to-cart"
-                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
-                        class="fas fa-plus"></i></button>
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">
+                    Fluffy aromatic rice stir-fried with finely chopped vegetables.
+                </p>
+                <div class="price-container"></div>
+                <span class="p-final" style="display:none;">60</span>
+                <span class="p-org" style="display:none;">60</span>
+                <span class="p-disc" style="display:none;">0</span>
             </div>
+
+            <!-- Item 4: Paneer Fried Rice -->
             <div class="food-card glass">
                 <h3 class="food-title" data-i18n="item-paneerfriedrice">Paneer Fried Rice</h3>
                 <p data-i18n="desc-paneerfriedrice"
-                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">Protein-packed delight! Our
-                    classic fried rice upgraded with generous chunks of golden-fried paneer. A hearty meal that
-                    satisfies the soul.</p>
-                <button class="btn-primary add-to-cart"
-                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
-                        class="fas fa-plus"></i></button>
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">
+                    Healthy and tasty fried rice with protein-rich paneer chunks.
+                </p>
+                <div class="price-container"></div>
+                <span class="p-final" style="display:none;">80</span>
+                <span class="p-org" style="display:none;">80</span>
+                <span class="p-disc" style="display:none;">0</span>
+                <span class="p-offer" style="display:none;"></span>
             </div>
+
+            <!-- Item 5: Special Fried Rice -->
             <div class="food-card glass">
                 <h3 class="food-title" data-i18n="item-specialfriedrice">Special Fried Rice</h3>
                 <p data-i18n="desc-specialfriedrice"
-                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">The Royal Feast! Rich
-                    Basmati rice tossed with crunchy cashews, sweet raisins, and exotic veggies. A sweet and savory
-                    masterpiece fit for a King.</p>
-                <button class="btn-primary add-to-cart"
-                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
-                        class="fas fa-plus"></i></button>
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">
+                    Indo-Chinese fusion rice with unique spices and double veggies.
+                </p>
+                <div class="price-container"></div>
+                <span class="p-final" style="display:none;">80</span>
+                <span class="p-org" style="display:none;">80</span>
+                <span class="p-disc" style="display:none;">0</span>
+                <span class="p-offer" style="display:none;"></span>
             </div>
         </div>
 
-        <!-- Category: Snacks & Starters -->
-        <h2 class="section-title animate-enter" data-i18n="cat-starters" style="margin-top:4rem;"><i
-                class="fas fa-drumstick-bite" style="margin-right:10px; color:var(--primary)"></i>Starters</h2>
-        <div class="food-grid animate-enter">
+
+        <!-- Category: Starters -->
+        <h2 class="category-title animate-enter" data-i18n="cat-starters">Starters</h2>
+        <p class="category-description animate-enter" data-i18n="desc-starters">
+            Crispy, spicy, and perfectly seasoned. Our starters are the perfect beginning to any feast.
+        </p>
+        <div id="grid-starters" class="food-grid animate-enter">
+            <!-- Item 1 -->
             <div class="food-card glass">
                 <h3 class="food-title" data-i18n="item-honeypotato">Crispy Honey Potato</h3>
                 <p data-i18n="desc-honeypotato" style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">
-                    Sweet, spicy, and sticky! Crispy potato fingers glazed in a glistening honey-chili sauce and topped
-                    with roasted sesame seeds. Impossible to stop at one.</p>
-                <button class="btn-primary add-to-cart"
-                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
-                        class="fas fa-plus"></i></button>
+                    Sweet and spicy crispy potato fingers tossed in honey and sesame.
+                </p>
+                <div class="price-container"></div>
+                <span class="p-final" style="display:none;">80</span>
+                <span class="p-org" style="display:none;">80</span>
+                <span class="p-disc" style="display:none;">0</span>
+                <span class="p-offer" style="display:none;"></span>
             </div>
+
+            <!-- Item 2 -->
             <div class="food-card glass">
-                <h3 class="food-title" data-i18n="item-chefhoneypotato">Chef's Special Honey Potato</h3>
+                <h3 class="food-title" data-i18n="item-chefhoneypotato">Chef Special Honey Potato</h3>
                 <p data-i18n="desc-chefhoneypotato"
-                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">The ultimate crunch!
-                    Extra-crispy potatoes tossed with ginger, garlic, and our secret chef's glaze. A texture
-                    combination that will blow your mind.</p>
-                <button class="btn-primary add-to-cart"
-                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
-                        class="fas fa-plus"></i></button>
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">
+                    Extra crispy potatoes with a unique blend of Chef's secret spices.
+                </p>
+                <div class="price-container"></div>
+                <span class="p-final" style="display:none;">100</span>
+                <span class="p-org" style="display:none;">100</span>
+                <span class="p-disc" style="display:none;">0</span>
             </div>
+
+            <!-- Item 3 -->
             <div class="food-card glass">
                 <h3 class="food-title" data-i18n="item-paneertikka">Classic Paneer Tikka</h3>
                 <p data-i18n="desc-paneertikka" style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">
-                    Smoky perfection! Fresh cottage cheese marinated in hung curd and aromatic spices, then roasted in a
-                    clay tandoor until charred and irresistible.</p>
-                <button class="btn-primary add-to-cart"
-                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
-                        class="fas fa-plus"></i></button>
+                    Marinated paneer cubes grilled to perfection with onions and capsicum.
+                </p>
+                <div class="price-container"></div>
+                <span class="p-final" style="display:none;">120</span>
+                <span class="p-org" style="display:none;">120</span>
+                <span class="p-disc" style="display:none;">0</span>
             </div>
+
+            <!-- Item 4 -->
             <div class="food-card glass">
                 <h3 class="food-title" data-i18n="item-tandooritikka">Tandoori Paneer Tikka</h3>
                 <p data-i18n="desc-tandooritikka"
-                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">Fiery and bold! Paneer cubes
-                    marinated in a spicy red chili and yogurt mix, roasted to give a deep, smoky flavor that lingers on
-                    your palate.</p>
-                <button class="btn-primary add-to-cart"
-                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
-                        class="fas fa-plus"></i></button>
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">
+                    Authentic tandoori flavor paneer tikka with smoky coal aroma.
+                </p>
+                <div class="price-container"></div>
+                <span class="p-final" style="display:none;">140</span>
+                <span class="p-org" style="display:none;">140</span>
+                <span class="p-disc" style="display:none;">0</span>
             </div>
+
+            <!-- Item 5 -->
             <div class="food-card glass">
                 <h3 class="food-title" data-i18n="item-vegspringroll">Veg Spring Roll</h3>
                 <p data-i18n="desc-vegspringroll"
-                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">The Golden Crunch! A
-                    paper-thin crispy wrapper stuffed with a savory, spiced vegetable stir-fry. Served piping hot with
-                    our special schezwan dip.</p>
-                <button class="btn-primary add-to-cart"
-                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
-                        class="fas fa-plus"></i></button>
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">
+                    Crispy fried rolls stuffed with seasoned vegetable filling.
+                </p>
+                <div class="price-container"></div>
+                <span class="p-final" style="display:none;">60</span>
+                <span class="p-org" style="display:none;">60</span>
+                <span class="p-disc" style="display:none;">0</span>
             </div>
+
+            <!-- Item 6 -->
             <div class="food-card glass">
                 <h3 class="food-title" data-i18n="item-paneerspringroll">Paneer Spring Roll</h3>
                 <p data-i18n="desc-paneerspringroll"
-                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">Cheesy and crispy! The
-                    classic spring roll stuffed with a rich filling of grated spiced paneer and veggies. A creamy
-                    surprise in every bite.</p>
-                <button class="btn-primary add-to-cart"
-                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
-                        class="fas fa-plus"></i></button>
+                    style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">
+                    Delicious crispy rolls with a rich paneer and veggie stuffing.
+                </p>
+                <div class="price-container"></div>
+                <span class="p-final" style="display:none;">80</span>
+                <span class="p-org" style="display:none;">80</span>
+                <span class="p-disc" style="display:none;">0</span>
+                <span class="p-offer" style="display:none;"></span>
             </div>
-            <!-- Special Request Item -->
-            <div class="food-card glass must-try" style="border: 2px solid var(--primary);">
-                <div
-                    style="position:absolute; top:10px; right:10px; background:var(--primary); padding:2px 8px; border-radius:10px; font-size:0.7rem;">
-                    MUST TRY</div>
+
+            <!-- Item 7 (Dahi Bda) -->
+            <div class="food-card glass must-try">
+                <div class="badge">MUST TRY</div>
                 <h3 class="food-title" data-i18n="item-dahibda">Dahi Bda</h3>
-                <p data-i18n="desc-dahibda" style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">A
-                    cool explosion! Cloud-soft lentil dumplings soaked in chilled, creamy yogurt, topped with tangy
-                    tamarind chutney and a sprinkle of roasted spices.</p>
-                <button class="btn-primary add-to-cart"
-                    style="margin-top:15px; font-size:0.8rem; border:none; cursor:pointer;">Add to Cart <i
-                        class="fas fa-plus"></i></button>
+                <p data-i18n="desc-dahibda" style="color:#aaa; font-size:0.9rem; margin-top:10px; line-height:1.4;">
+                    Soft lentil dumplings soaked in creamy spiced yogurt with chutneys.
+                </p>
+                <div class="price-container"></div>
+                <span class="p-final" style="display:none;">50</span>
+                <span class="p-org" style="display:none;">50</span>
+                <span class="p-disc" style="display:none;">0</span>
             </div>
         </div>
+
 
     </section>
 
@@ -317,6 +372,9 @@
             <i class="fab fa-facebook" style="margin: 0 10px; cursor: pointer; transition: 0.3s; color:white;"></i>
             <i class="fab fa-twitter" style="margin: 0 10px; cursor: pointer; transition: 0.3s; color:white;"></i>
         </div>
+        <p style="margin-top: 1rem;"><a href="admin.html"
+                style="color: rgba(255,255,255,0.2); text-decoration: none; font-size: 0.7rem;">Admin Login</a></p>
+
     </footer>
 
     <!-- Floating Cart Button -->
@@ -339,8 +397,10 @@
                 <p style="color: #ccc;">Your cart is empty.</p>
             </div>
             <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; text-align: right;">
-                <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem;">Total Items: <span
+                <p style="font-size: 1.1rem; color: #ccc; margin-bottom: 0.3rem;">Total Items: <span
                         id="cart-total-count">0</span></p>
+                <p style="font-size: 1.4rem; font-weight: 800; color: var(--primary); margin-bottom: 1.5rem;">Grand
+                    Total: ₹<span id="cart-total-price">0</span></p>
                 <button id="checkout-btn" class="btn-primary" style="width: 100%;"><i class="fab fa-whatsapp"></i> Order
                     on WhatsApp</button>
             </div>

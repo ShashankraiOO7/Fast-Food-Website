@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Zaika Junction</title>
+    <link rel="icon" href="images/bg.png" type="image/png">
+    <link rel="stylesheet" href="style.css?v=13">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        .admin-container {
+            padding-top: 120px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 50px;
+        }
+
+        .login-card {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .dashboard-grid {
+            margin-top: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            color: white;
+        }
+
+        th,
+        td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            color: var(--primary);
+        }
+
+        .action-btn {
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            margin-right: 5px;
+        }
+
+        .edit-btn {
+            background: var(--primary);
+            color: black;
+        }
+
+        .delete-btn {
+            background: #ff4444;
+            color: white;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        /* Fix for Dropdown visibility */
+        select.input-field {
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+        select.input-field option {
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+
+        #admin-panel {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Ticker Announcement -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            Loading announcements...
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="glass">
+
+        <div class="logo" style="display: flex; flex-direction: column; line-height: 1;">
+            <span style="font-size: 0.7rem; color: #aaa; letter-spacing: 2px;">ZAIKA JUNCTION</span>
+            <span>ADMIN<span style="color:var(--secondary)">PANEL</span></span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">View Site</a></li>
+            <li><button id="logout-btn" class="btn-primary" style="display:none;">Logout</button></li>
+        </ul>
+    </nav>
+
+    <div class="admin-container">
+        <!-- Login Form -->
+        <div id="login-section" class="glass login-card">
+            <h2 style="color: var(--primary); margin-bottom: 1rem;">Admin Login</h2>
+            <input type="email" id="email" placeholder="Email" class="input-field">
+            <input type="password" id="password" placeholder="Password" class="input-field">
+            <button id="login-btn" class="btn-primary" style="width: 100%; margin-top: 1rem;">Login</button>
+            <p id="login-error" style="color: #ff4444; margin-top: 10px; font-size: 0.9rem;"></p>
+        </div>
+
+        <!-- Dashboard Panel -->
+        <div id="admin-panel" class="glass" style="padding: 2rem;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; gap: 15px; flex-wrap: wrap;">
+                <h2 style="color: var(--primary); margin: 0;">Menu Management</h2>
+                <div style="display: flex; gap: 10px;">
+                    <button id="sync-menu-btn" class="btn-primary"
+                        style="background: transparent; border: 1px solid var(--secondary); color: var(--secondary);">Sync
+                        Hardcoded Menu</button>
+                    <button id="add-item-btn" class="btn-primary">+ Add New Item</button>
+                </div>
+            </div>
+
+
+            <!-- Ticker Management Section -->
+            <div class="glass" style="padding:1.5rem; margin-bottom:2rem;">
+                <h3>Ticker Announcement</h3>
+                <div style="display:flex; gap:10px; margin-top:10px; flex-wrap: wrap;">
+                    <input type="text" id="ticker-input" placeholder="Enter scrolling text..."
+                        style="flex:1; min-width: 250px; padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.3); color:white;">
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        <label style="font-size: 0.75rem; color: #aaa;">Announcement Expiry Date</label>
+                        <input type="date" id="ticker-expiry"
+                            style="padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.3); color:white;">
+                    </div>
+                    <button id="update-ticker-btn" class="btn-primary" style="padding: 10px 20px;">Update</button>
+                </div>
+                <p style="color: #666; font-size: 0.8rem; margin-top: 8px;">* Ye text website ke sabse upar chalti hui
+                    patti (marquee) mein dikhega.</p>
+            </div>
+
+            <!-- Helpful Tip -->
+
+            <div
+                style="background: rgba(57, 255, 20, 0.05); border: 1px dashed var(--primary); padding: 1rem; border-radius: 12px; margin-bottom: 2rem; display: flex; align-items: flex-start; gap: 12px;">
+                <i class="fas fa-lightbulb" style="color: var(--primary); margin-top: 4px;"></i>
+                <p style="color: #ccc; font-size: 0.9rem; line-height: 1.4;">
+                    <strong style="color: white;">Tip:</strong> Items you add via <strong>"+ Add New Item"</strong> will
+                    appear here, and you can <strong>Edit</strong> or <strong>Delete</strong> them later. To edit static
+                    items, sync them first.
+                </p>
+            </div>
+
+            <div
+                style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 16px;">
+                <h3 style="color: white; margin-bottom: 1.5rem; font-size: 1.2rem;"><i class="fas fa-list"></i> Manage
+                    Existing Items</h3>
+                <div style="overflow-x: auto;">
+                    <div class="dashboard-grid" style="margin-top: 0;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Discount %</th>
+                                    <th>Offer & Validity</th>
+                                    <th>Actions</th>
+
+                                </tr>
+                            </thead>
+                            <tbody id="menu-tbody">
+                                <!-- Items injected here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal for Add/Edit -->
+    <div id="item-modal" class="glass"
+        style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; padding: 2rem; width: 95%; max-width: 500px; max-height: 85vh; overflow-y: auto; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+
+        <h2 id="modal-title" style="color: var(--primary); margin-bottom: 1.5rem;">Add Item</h2>
+
+        <input type="hidden" id="item-id">
+
+        <label style="color:#aaa; font-size:0.8rem; display:block; margin-bottom:5px;">Item Name</label>
+        <input type="text" id="item-name" placeholder="E.g. Crispy Burger" class="input-field">
+
+        <label style="color:#aaa; font-size:0.8rem; display:block; margin-bottom:5px; margin-top:10px;">Category</label>
+        <select id="item-category" class="input-field">
+            <option value="Burgers">Burgers</option>
+            <option value="Chowmein">Chowmein</option>
+            <option value="Rice & Manchurian">Rice & Manchurian</option>
+            <option value="Starters">Starters</option>
+        </select>
+
+        <label style="color:#aaa; font-size:0.8rem; display:block; margin-bottom:5px; margin-top:10px;">Price
+            (₹)</label>
+        <input type="number" id="item-price" placeholder="E.g. 99" class="input-field">
+
+        <label style="color:#aaa; font-size:0.8rem; display:block; margin-bottom:5px; margin-top:10px;">Special Offer /
+            BOGO (e.g. Buy 1 Get 1 Free)</label>
+        <input type="text" id="item-offer" placeholder="E.g. Buy 1 Get 1 Free or Buy 3 Get 1" class="input-field">
+
+        <label
+            style="color:#aaa; font-size:0.8rem; display:block; margin-bottom:5px; margin-top:10px;">Description</label>
+        <textarea id="item-desc" placeholder="Brief description..." class="input-field"
+            style="height: 80px;"></textarea>
+
+        <label style="color:#aaa; font-size:0.8rem; display:block; margin-bottom:5px; margin-top:10px;">Discount
+            (%)</label>
+        <input type="number" id="item-discount" placeholder="E.g. 10" class="input-field">
+
+        <label style="color:#aaa; font-size:0.8rem; display:block; margin-bottom:5px; margin-top:10px;">Offer Expiry
+            Date</label>
+        <input type="date" id="item-expiry" class="input-field">
+
+        <label style="color:#aaa; font-size:0.8rem; display:block; margin-bottom:5px; margin-top:10px;">Image URL
+            (Optional)</label>
+        <input type="text" id="item-image" placeholder="Link to food image" class="input-field">
+
+
+        <div style="display: flex; gap: 10px; margin-top: 1.5rem;">
+            <button id="save-item-btn" class="btn-primary" style="flex: 1;">Save Changes</button>
+            <button id="close-modal-btn" class="btn-primary"
+                style="flex: 1; background: transparent; border: 1px solid #ff4444; color: #ff4444;">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        const SUPABASE_URL = "https://fgmjuamzpaycqwhzsqdf.supabase.co";
+        const SUPABASE_KEY = "sb_publishable_vbcZf80-k3No54TZngUNNQ_-UfW-7Cp";
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        const loginSection = document.getElementById('login-section');
+        const adminPanel = document.getElementById('admin-panel');
+        const logoutBtn = document.getElementById('logout-btn');
+        const menuTbody = document.getElementById('menu-tbody');
+
+        const itemModal = document.getElementById('item-modal');
+        const tickerInput = document.getElementById('ticker-input');
+        const updateTickerBtn = document.getElementById('update-ticker-btn');
+
+
+        // Check Session
+        async function checkSession() {
+            const { data: { session } } = await _supabase.auth.getSession();
+            if (session) showPanel();
+        }
+
+        function showPanel() {
+            loginSection.style.display = 'none';
+            adminPanel.style.display = 'block';
+            logoutBtn.style.display = 'block';
+            fetchItems();
+            fetchTicker();
+        }
+
+        const tickerExpiry = document.getElementById('ticker-expiry');
+
+        const dailySpecials = { 0: "SUNDAY FUNDAY: Combo @ 25% OFF!", 1: "🔴 CLOSED TODAY (Monday).", 2: "TASTY TUESDAY: BOGO Burgers!", 3: "WACKY WEDNESDAY: Flat 20% OFF Chinese!", 4: "THIRSTY THURSDAY: Free Drink!", 5: "FRI-YAY: 10% Student Discount!", 6: "SIZZLING SATURDAY: Paneer Tikka @ ₹149!" };
+
+        // Ticker Logic
+        async function fetchTicker() {
+            const day = new Date().getDay();
+            const tickerEl = document.querySelector('.ticker');
+            const tickerWrap = document.querySelector('.ticker-wrap');
+            if (!tickerEl) return;
+
+            try {
+                // Try fetching with expiry
+                let { data, error } = await _supabase.from('site_settings').select('value, expires_at').eq('key', 'ticker_text').single();
+
+                // Fallback if expires_at is missing from table
+                if (error && error.message.includes("expires_at")) {
+                    const { data: fallbackData } = await _supabase.from('site_settings').select('value').eq('key', 'ticker_text').single();
+                    data = fallbackData;
+                }
+
+                if (data && data.value) {
+                    tickerInput.value = data.value;
+                    if (data.expires_at) {
+                        tickerExpiry.value = data.expires_at.split('T')[0];
+                        // Check if expired for display
+                        if (new Date(data.expires_at) < new Date()) {
+                            tickerEl.textContent = dailySpecials[day];
+                        } else {
+                            tickerEl.textContent = data.value;
+                        }
+                    } else {
+                        tickerEl.textContent = data.value;
+                    }
+                } else {
+                    tickerEl.textContent = dailySpecials[day];
+                }
+            } catch (err) {
+                tickerEl.textContent = dailySpecials[day];
+            }
+        }
+
+
+        updateTickerBtn.addEventListener('click', async () => {
+            const newValue = tickerInput.value;
+            const expiry = document.getElementById('ticker-expiry').value;
+            const originalText = updateTickerBtn.innerText;
+            updateTickerBtn.innerText = "Updating...";
+
+            try {
+                const upsertData = { key: 'ticker_text', value: newValue };
+                if (expiry) upsertData.expires_at = expiry;
+
+                const { error } = await _supabase
+                    .from('site_settings')
+                    .upsert(upsertData, { onConflict: 'key' });
+
+                if (error) {
+                    // Fallback Attempt: If column expires_at doesn't exist yet
+                    if (error.message.includes("expires_at")) {
+                        const { error: coreError } = await _supabase.from('site_settings').upsert({ key: 'ticker_text', value: newValue }, { onConflict: 'key' });
+                        if (coreError) {
+                            alert("Error: " + coreError.message);
+                        } else {
+                            alert("Updated! (Note: Expiry was skipped. Please run SQL setup)");
+                            updateTickerBtn.innerText = "Updated! ✅";
+                            setTimeout(() => updateTickerBtn.innerText = originalText, 2000);
+                        }
+                    } else {
+                        alert("Error: " + error.message);
+                    }
+                } else {
+                    updateTickerBtn.innerText = "Updated! ✅";
+                    setTimeout(() => updateTickerBtn.innerText = originalText, 2000);
+                }
+            } catch (err) {
+                console.error("Ticker System Error:", err);
+                alert("Fatal Error: " + err.message);
+            } finally {
+                if (updateTickerBtn.innerText === "Updating...") updateTickerBtn.innerText = originalText;
+            }
+        });
+
+
+
+        // Login Logic
+        document.getElementById('login-btn').addEventListener('click', async () => {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const { error } = await _supabase.auth.signInWithPassword({ email, password });
+            if (error) {
+                document.getElementById('login-error').innerText = "Incorrect Email or Password";
+            } else {
+                showPanel();
+            }
+        });
+
+        logoutBtn.addEventListener('click', async () => {
+            await _supabase.auth.signOut();
+            window.location.reload();
+        });
+
+        // CRUD Logic
+        async function fetchItems() {
+            console.log("Fetching items...");
+            try {
+                const { data, error } = await _supabase.from('menu_items').select('*').order('created_at', { ascending: false });
+                if (error) {
+                    console.error("Fetch Items Error:", error);
+                    return;
+                }
+
+                menuTbody.innerHTML = '';
+                data.forEach(item => {
+                    const tr = document.createElement('tr');
+                    let expiryStatus = "";
+                    if (item.offer_ends_at) {
+                        const isExpired = new Date(item.offer_ends_at) < new Date();
+                        expiryStatus = `<br><small style="color:${isExpired ? '#ff4444' : '#aaa'}">Ends: ${new Date(item.offer_ends_at).toLocaleDateString()}${isExpired ? ' (EXPIRED)' : ''}</small>`;
+                    }
+
+                    tr.innerHTML = `
+                        <td>${item.name}</td>
+                        <td>${item.category}</td>
+                        <td>₹${item.price}</td>
+                        <td>${item.discount_percent || 0}%</td>
+                        <td>${item.offer_text || '-'} ${expiryStatus}</td>
+                        <td>
+                            <button class="action-btn edit-btn" onclick="openEditModal('${item.id}')">Edit</button>
+                            <button class="action-btn delete-btn" onclick="deleteItem('${item.id}')">Delete</button>
+                        </td>
+                    `;
+                    menuTbody.appendChild(tr);
+                });
+            } catch (err) {
+                console.error("Fetch Items Exception:", err);
+            }
+        }
+
+        window.deleteItem = async (id) => {
+            if (!confirm("Are you sure you want to delete this item?")) return;
+            const { error } = await _supabase.from('menu_items').delete().eq('id', id);
+            if (error) alert("Delete failed: " + error.message);
+            else fetchItems();
+        };
+
+        window.openEditModal = async (id) => {
+
+            const { data } = await _supabase.from('menu_items').select('*').eq('id', id).single();
+            document.getElementById('modal-title').innerText = "Edit Item";
+            document.getElementById('item-id').value = data.id;
+            document.getElementById('item-name').value = data.name;
+            document.getElementById('item-category').value = data.category;
+            document.getElementById('item-price').value = data.price;
+            document.getElementById('item-offer').value = data.offer_text || '';
+            document.getElementById('item-desc').value = data.description || '';
+            document.getElementById('item-image').value = data.image_url || '';
+            document.getElementById('item-discount').value = data.discount_percent || 0;
+            document.getElementById('item-expiry').value = data.offer_ends_at ? data.offer_ends_at.split('T')[0] : '';
+            itemModal.style.display = 'block';
+        };
+
+        document.getElementById('add-item-btn').addEventListener('click', () => {
+            document.getElementById('modal-title').innerText = "Add Item";
+            document.getElementById('item-id').value = '';
+            document.getElementById('item-name').value = '';
+            document.getElementById('item-price').value = '';
+            document.getElementById('item-offer').value = '';
+            document.getElementById('item-desc').value = '';
+            document.getElementById('item-image').value = '';
+            document.getElementById('item-discount').value = 0;
+            document.getElementById('item-expiry').value = '';
+            itemModal.style.display = 'block';
+        });
+
+
+        document.getElementById('close-modal-btn').addEventListener('click', () => itemModal.style.display = 'none');
+
+        document.getElementById('save-item-btn').addEventListener('click', async () => {
+            const id = document.getElementById('item-id').value;
+            const btn = document.getElementById('save-item-btn');
+            const originalText = btn.innerText;
+            btn.innerText = "Saving...";
+            btn.disabled = true;
+
+            const fullItem = {
+                name: document.getElementById('item-name').value,
+                category: document.getElementById('item-category').value,
+                price: parseFloat(document.getElementById('item-price').value),
+                offer_text: document.getElementById('item-offer').value,
+                description: document.getElementById('item-desc').value,
+                image_url: document.getElementById('item-image').value,
+                discount_percent: parseFloat(document.getElementById('item-discount').value) || 0,
+                offer_ends_at: document.getElementById('item-expiry').value || null
+            };
+
+            const coreItem = {
+                name: fullItem.name,
+                category: fullItem.category,
+                price: fullItem.price,
+                offer_text: fullItem.offer_text,
+                description: fullItem.description,
+                image_url: fullItem.image_url
+            };
+
+            try {
+                let error;
+                // Attempt 1: Full Save with new features
+                if (id) {
+                    const { error: err } = await _supabase.from('menu_items').update(fullItem).eq('id', id);
+                    error = err;
+                } else {
+                    const { error: err } = await _supabase.from('menu_items').insert([fullItem]);
+                    error = err;
+                }
+
+                // Attempt 2: Fallback Save (if new columns are missing)
+                if (error && (error.message.includes("discount_percent") || error.message.includes("offer_ends_at"))) {
+                    console.warn("Schema mismatch detected. Falling back to core fields only.");
+                    if (id) {
+                        const { error: err } = await _supabase.from('menu_items').update(coreItem).eq('id', id);
+                        error = err;
+                    } else {
+                        const { error: err } = await _supabase.from('menu_items').insert([coreItem]);
+                        error = err;
+                    }
+
+                    if (!error) {
+                        alert("Note: Saved successfully, but 'Discount' and 'Expiry' were skipped because you haven't run the SQL setup yet.");
+                    }
+                }
+
+                if (error) {
+                    console.error("Save Error:", error);
+                    alert("Error! Could not save: " + (error.message || "An unknown error occurred"));
+                } else {
+                    itemModal.style.display = 'none';
+                    fetchItems();
+                    alert("Item successfully saved! ✅");
+                }
+
+            } catch (err) {
+                console.error("System Error:", err);
+                alert("Critical System Error: " + err.message);
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        });
+
+
+
+
+        // Sync Hardcoded Menu Logic
+        const staticItems = [
+            { name: "Classic Veg Burger", category: "Burgers", price: 59, description: "A symphony of farm-fresh crunch! Golden-fried veggie patty in a soft toasted bun." },
+            { name: "Cheese Burger", category: "Burgers", price: 69, description: "Melted cheese goodness with our signature veggie patty and fresh toppings." },
+            { name: "Paneer Burger", category: "Burgers", price: 89, description: "Premium grilled paneer slice with spicy mayo and crunchy lettuce." },
+            { name: "Crispy Special Burger", category: "Burgers", price: 99, description: "Our bestseller! Double crunch patty with extra secret sauce." },
+            { name: "Veg Chowmein", category: "Chowmein", price: 45, description: "Classic street-style wok-tossed noodles with fresh seasonal veggies." },
+            { name: "Paneer Chowmein", category: "Chowmein", price: 55, description: "Wok-tossed noodles loaded with soft paneer cubes and spicy sauces." },
+            { name: "Special Chowmein", category: "Chowmein", price: 75, description: "Chef's special mix of exotic veggies and premium seasonings." },
+            { name: "Veg Manchurian", category: "Rice & Manchurian", price: 65, description: "Crispy veggie balls in a tangy, spicy ginger-garlic gravy." },
+            { name: "Paneer Manchurian", category: "Rice & Manchurian", price: 85, description: "Soft paneer cubes tossed in classic Manchurian sauce." },
+            { name: "Veg Fried Rice", category: "Rice & Manchurian", price: 40, description: "Fluffy aromatic rice stir-fried with finely chopped vegetables." },
+            { name: "Paneer Fried Rice", category: "Rice & Manchurian", price: 60, description: "Healthy and tasty fried rice with protein-rich paneer chunks." },
+            { name: "Special Fried Rice", category: "Rice & Manchurian", price: 90, description: "Indo-Chinese fusion rice with unique spices and double veggies." },
+            { name: "Crispy Honey Potato", category: "Starters", price: 70, description: "Sweet and spicy crispy potato fingers tossed in honey and sesame." },
+            { name: "Chef Special Honey Potato", category: "Starters", price: 110, description: "Extra crispy potatoes with a unique blend of Chef's secret spices." },
+            { name: "Classic Paneer Tikka", category: "Starters", price: 130, description: "Marinated paneer cubes grilled to perfection with onions and capsicum." },
+            { name: "Tandoori Paneer Tikka", category: "Starters", price: 140, description: "Authentic tandoori flavor paneer tikka with smoky coal aroma." },
+            { name: "Veg Spring Roll", category: "Starters", price: 50, description: "Crispy fried rolls stuffed with seasoned vegetable filling." },
+            { name: "Paneer Spring Roll", category: "Starters", price: 70, description: "Delicious crispy rolls with a rich paneer and veggie stuffing." },
+            { name: "Dahi Bda", category: "Starters", price: 40, description: "Soft lentil dumplings soaked in creamy spiced yogurt with chutneys." }
+        ];
+
+
+        document.getElementById('sync-menu-btn').addEventListener('click', async () => {
+            if (!confirm("Do you want to import all old items into the database? This will allow you to edit them.")) return;
+
+            const btn = document.getElementById('sync-menu-btn');
+            const originalText = btn.innerText;
+            btn.innerText = "Syncing...";
+            btn.disabled = true;
+
+            try {
+                // Check existing items to avoid duplicates
+                const { data: existing, error: fetchError } = await _supabase.from('menu_items').select('name');
+
+                if (fetchError) {
+                    if (fetchError.message.includes("relation") || fetchError.message.includes("does not exist")) {
+                        alert("ERROR: 'menu_items' table not found. Please run the SQL setup.");
+                    } else {
+                        alert("Fetch Error: " + fetchError.message);
+                    }
+                    return;
+                }
+
+                const existingNames = (existing || []).map(i => i.name);
+                const toAdd = staticItems.filter(item => !existingNames.includes(item.name));
+
+                if (toAdd.length > 0) {
+                    const { error: insertError } = await _supabase.from('menu_items').insert(toAdd);
+                    if (insertError) alert("Sync failed: " + insertError.message);
+                    else alert(`${toAdd.length} items successfully synced!`);
+                } else {
+                    alert("All items are already synced!");
+                }
+                fetchItems();
+            } catch (err) {
+                alert("System Error: " + err.message);
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        });
+
+
+        checkSession();
+
+    </script>
+</body>
+
+</html>
