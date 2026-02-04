@@ -124,9 +124,32 @@ function getTranslationKey(name) {
 async function updateTicker() {
     const ticker = document.querySelector('.ticker'); if (!ticker) return;
     try {
-        const { data } = await supabaseClient.from('site_settings').select('value').eq('key', 'ticker_text').single();
-        ticker.textContent = data ? data.value : dailySpecials[new Date().getDay()];
-    } catch (e) { ticker.textContent = dailySpecials[new Date().getDay()]; }
+        let { data, error } = await supabaseClient.from('site_settings').select('value, expires_at').eq('key', 'ticker_text').single();
+
+        // Handle migration case where expires_at might not exist
+        if (error && error.message.includes("expires_at")) {
+            const res = await supabaseClient.from('site_settings').select('value').eq('key', 'ticker_text').single();
+            data = res.data;
+        }
+
+        let showCustom = false;
+        if (data && data.value) {
+            if (data.expires_at) {
+                // Check expiry
+                if (new Date(data.expires_at) > new Date()) {
+                    showCustom = true;
+                }
+            } else {
+                // No expiry = always show
+                showCustom = true;
+            }
+        }
+
+        ticker.textContent = showCustom ? data.value : dailySpecials[new Date().getDay()];
+    } catch (e) {
+        console.error("Ticker Error:", e);
+        ticker.textContent = dailySpecials[new Date().getDay()];
+    }
 }
 
 async function fetchDynamicMenu() {
